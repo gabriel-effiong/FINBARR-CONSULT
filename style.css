@@ -1116,8 +1116,25 @@
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 0 var(--space-sm);
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
             .hero-title {
                 font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-md);
             }
             
             .services-grid {
@@ -1128,23 +1145,228 @@
                 grid-template-columns: 1fr;
             }
             
-            .hero-stats {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+            
+            .client-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .about-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .about-actions .btn {
+                width: 100%;
+                justify-content: center;
             }
         }
 
         @media (max-width: 576px) {
+            html {
+                font-size: 14px;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
             .hero-title {
                 font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: var(--space-lg);
             }
             
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: var(--space-sm);
             }
             
             .hero-buttons .btn {
                 width: 100%;
                 max-width: 280px;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: var(--space-sm);
+            }
+            
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+            
+            .consulting-card {
+                max-width: 100%;
+                padding: var(--space-lg);
+            }
+            
+            .floating-elements .element {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .floating-elements .element i {
+                font-size: 1.25rem;
+            }
+            
+            .services-grid {
+                gap: var(--space-lg);
+            }
+            
+            .service-card {
+                padding: var(--space-lg);
+            }
+            
+            .service-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .service-icon i {
+                font-size: 1.75rem;
+            }
+            
+            .process-step {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: var(--space-lg);
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                margin: 0 auto var(--space-md);
+            }
+            
+            .team-member {
+                max-width: 100%;
+            }
+            
+            .member-image {
+                height: 200px;
+            }
+            
+            .image-placeholder {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .image-placeholder i {
+                font-size: 2.5rem;
+            }
+            
+            .testimonial-card {
+                padding: var(--space-lg);
+            }
+            
+            .client-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: var(--space-lg);
+            }
+            
+            .footer-content {
+                gap: var(--space-lg);
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: var(--space-lg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .btn {
+                padding: var(--space-sm) var(--space-md);
+                font-size: 0.9rem;
+            }
+            
+            .nav-logo h2 {
+                font-size: 1.25rem;
+            }
+            
+            .trust-bar {
+                padding: var(--space-lg) 0;
+            }
+            
+            .client-logos {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-sm);
+            }
+            
+            .logo-item {
+                padding: var(--space-sm);
+            }
+            
+            .feature {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-sm);
+            }
+            
+            .feature-icon {
+                align-self: center;
+            }
+            
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-sm);
+            }
+            
+            .author-image {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .author-image i {
+                font-size: 1.25rem;
+            }
+            
+            .footer-social {
+                justify-content: center;
             }
         }
