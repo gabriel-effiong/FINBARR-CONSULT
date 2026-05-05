@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINBARR CONSULT LIMITED | Strategic Business Consulting Solutions</title>
+    <meta name="description" content="FINBARR CONSULT LIMITED - Premier business consulting firm providing strategic solutions for growth and transformation across Nigeria">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACAkAAcKz1s0AAAAASUVORK5CYII=">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <h5>FINBARR CONSULT</h5>
+                        <span>LIMITED</span>
+                    </div>
+                    
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="#solutions" class="nav-link">Solutions</a></li>
+                        <li><a href="#team" class="nav-link">Team</a></li>
+                        <li><a href="#clients" class="nav-link">Clients</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    
+                    <div class="nav-cta">
+                        <button class="cta-button" onclick="openConsultationModal()">
+                            <i class="fas fa-calendar-check"></i>
+                            Get Consultation
+                        </button>
+                    </div>
+                    
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Strategic <span class="highlight">Business Consulting</span> for Sustainable Growth
+                    </h1>
+                    <p class="hero-subtitle">
+                        Transforming businesses through innovative strategies, data-driven insights, and expert guidance to drive measurable results and long-term success across Nigeria and beyond.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="scrollToSection('services')">
+                            <i class="fas fa-chart-line"></i>
+                            Our Services
+                        </button>
+                        <button class="btn btn-secondary" onclick="openConsultationModal()">
+                            <i class="fas fa-handshake"></i>
+                            Free Consultation
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <h3 data-count="50">0</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 data-count="15">0</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 data-count="95">0</h3>
+                            <p>Client Satisfaction</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 data-count="30">0</h3>
+                            <p>Industry Partners</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="consulting-card">
+                        <div class="card-header">
+                            <i class="fas fa-bullseye"></i>
+                            <h4>Business Excellence</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>Driving growth through strategic innovation and operational excellence</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                            <span>Performance Improvement</span>
+                        </div>
+                    </div>
+                    <div class="floating-elements">
+                        <div class="element strategy">
+                            <i class="fas fa-chess-queen"></i>
+                        </div>
+                        <div class="element growth">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="element analytics">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="container">
+            <p class="trust-title">Trusted by Industry Leaders Across Multiple Sectors</p>
+            <div class="client-logos">
+                <div class="logo-item">
+                    <i class="fas fa-university"></i>
+                    <span>Financial Services</span>
+                </div>
+                <div class="logo-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Technology</span>
+                </div>
+                <div class="logo-item">
+                    <i class="fas fa-hospital"></i>
+                    <span>Healthcare</span>
+                </div>
+                <div class="logo-item">
+                    <i class="fas fa-industry"></i>
+                    <span>Manufacturing</span>
+                </div>
+                <div class="logo-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Energy</span>
+                </div>
+                <div class="logo-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Real Estate<span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <span class="section-badge">About Us</span>
+                    <h2 class="section-title">About FINBARR CONSULT LIMITED</h2>
+                    <p class="lead-text">
+                        We are a premier consulting firm dedicated to driving business transformation and sustainable growth for our clients across Nigeria and international markets.
+                    </p>
+                    <p>
+                        With decades of combined experience, our team of experts provides strategic guidance that helps organizations navigate complex challenges, capitalize on opportunities, and achieve their business objectives through innovative, practical solutions.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Mission-Driven Approach</h4>
+                                <p>Delivering exceptional value through tailored solutions that align with your business goals</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Visionary Strategy</h4>
+                                <p>Anticipating market trends and opportunities to keep you ahead of the competition</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Partnership Focus</h4>
+                                <p>Building long-term relationships based on trust, results, and mutual success</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-actions">
+                        <button class="btn btn-primary" onclick="scrollToSection('team')">
+                            Meet Our Team
+                        </button>
+                        <button class="btn btn-outline" onclick="downloadBrochure()">
+                            <i class="fas fa-download"></i>
+                            Download Brochure
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="about-visual">
+                    <div class="visual-container">
+                        <div class="main-visual">
+                            <i class="fas fa-chart-network"></i>
+                        </div>
+                        <div class="experience-badge">
+                            <h3>15+</h3>
+                            <p>Years of Excellence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Services</span>
+                <h2 class="section-title">Comprehensive Consulting Solutions</h2>
+                <p class="section-subtitle">
+                    Tailored services designed to address your unique business challenges and drive sustainable growth
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chess-queen"></i>
+                    </div>
+                    <h3>Strategic Planning</h3>
+                    <p>Develop robust business strategies that align with your vision and market opportunities for sustainable growth.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Market Analysis & Research</li>
+                        <li><i class="fas fa-check"></i> Competitive Strategy Development</li>
+                        <li><i class="fas fa-check"></i> Long-term Growth Planning</li>
+                    </ul>
+                    <button class="service-cta" onclick="openServiceModal('strategy')">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Business Analytics</h3>
+                    <p>Leverage data-driven insights to make informed decisions and optimize business performance across all departments.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Performance Metrics & KPI Development</li>
+                        <li><i class="fas fa-check"></i> Advanced Data Visualization</li>
+                        <li><i class="fas fa-check"></i> Predictive Analysis & Forecasting</li>
+                    </ul>
+                    <button class="service-cta" onclick="openServiceModal('analytics')">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Process Optimization</h3>
+                    <p>Streamline operations and improve efficiency through proven methodologies and industry best practices.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Comprehensive Workflow Analysis</li>
+                        <li><i class="fas fa-check"></i> Efficiency Improvement Strategies</li>
+                        <li><i class="fas fa-check"></i> Cost Reduction Initiatives</li>
+                    </ul>
+                    <button class="service-cta" onclick="openServiceModal('process')">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Organizational Development</h3>
+                    <p>Build high-performing teams and organizational structures that drive success and foster innovation.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Leadership Development Programs</li>
+                        <li><i class="fas fa-check"></i> Team Building & Collaboration</li>
+                        <li><i class="fas fa-check"></i> Change Management Strategies</li>
+                    </ul>
+                    <button class="service-cta" onclick="openServiceModal('organization')">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Digital Transformation</h3>
+                    <p>Embrace technology and innovation to stay competitive in the rapidly evolving digital landscape.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Technology Integration Planning</li>
+                        <li><i class="fas fa-check"></i> Digital Strategy Development</li>
+                        <li><i class="fas fa-check"></i> Innovation Consulting</li>
+                    </ul>
+                    <button class="service-cta" onclick="openServiceModal('digital')">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Risk Management</h3>
+                    <p>Identify, assess, and mitigate risks to protect your business and ensure long-term continuity.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Comprehensive Risk Assessment</li>
+                        <li><i class="fas fa-check"></i> Regulatory Compliance</li>
+                        <li><i class="fas fa-check"></i> Crisis Management Planning</li>
+                    </ul>
+                    <button class="service-cta" onclick="openServiceModal('risk')">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Approach</span>
+                <h2 class="section-title">Proven Methodology for Success</h2>
+                <p class="section-subtitle">
+                    Our structured approach ensures consistent, measurable results for every client engagement
+                </p>
+            </div>
+            
+            <div class="solutions-process">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Discovery & Analysis</h3>
+                        <p>Comprehensive assessment of your business, challenges, opportunities, and market position through in-depth research and stakeholder interviews.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Strategy Development</h3>
+                        <p>Creating tailored solutions based on data-driven insights, industry expertise, and innovative thinking to address your specific challenges.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Implementation & Execution</h3>
+                        <p>Executing strategies with precision, continuous monitoring, and agile adjustments to ensure optimal outcomes and timely delivery.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Results & Optimization</h3>
+                        <p>Measuring outcomes, analyzing performance data, and refining approaches for continuous improvement and sustained success.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Team</span>
+                <h2 class="section-title">Meet Our Expert Consultants</h2>
+                <p class="section-subtitle">
+                    Our team of seasoned professionals brings diverse expertise and proven track records in driving business success
+                </p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Mr Aniekeme Finbarr</h3>
+                        <p class="position">Chief Executive</p>
+                        <p class="bio">20+ years in business strategy, organizational transformation, and leadership development with extensive experience across multiple industries.</p>
+                        <div class="expertise">
+                            <span class="expertise-tag">Strategic Planning</span>
+                            <span class="expertise-tag">Leadership</span>
+                            <span class="expertise-tag">Business Growth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Gabriel Effiong</h3>
+                        <p class="position">Strategy & Analytics Lead</p>
+                        <p class="bio">PhD in Business Strategy with 15 years experience in market analysis, data-driven decision making, and growth strategy development.</p>
+                        <div class="expertise">
+                            <span class="expertise-tag">Data Analytics</span>
+                            <span class="expertise-tag">Market Research</span>
+                            <span class="expertise-tag">Growth Strategy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Gabriel Effiong</h3>
+                        <p class="position">Operations & Process Director</p>
+                        <p class="bio">Specialized in process optimization, efficiency improvement, and operational excellence with 12 years of consulting experience.</p>
+                        <div class="expertise">
+                            <span class="expertise-tag">Process Optimization</span>
+                            <span class="expertise-tag">Operations</span>
+                            <span class="expertise-tag">Efficiency</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Clients</span>
+                <h2 class="section-title">Success Stories & Testimonials</h2>
+                <p class="section-subtitle">
+                    Discover how we've helped organizations achieve remarkable results and drive sustainable growth
+                </p>
+            </div>
+            
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"FINBARR CONSULT LIMITED transformed our business strategy, resulting in 40% revenue growth within the first year. Their expertise in market analysis and strategic planning was invaluable."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Mr Gabriel Effiong</h4>
+                            <p>CEO, Prime Manufacturing Ltd.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"The digital transformation roadmap developed by FINBARR CONSULT helped us streamline operations and reduce costs by 25%. Their team's dedication and expertise exceeded our expectations."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Gabriel Effiong</h4>
+                            <p>Operations Director, TechSolutions NG</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Business?</h2>
+                <p>Schedule a complimentary consultation to discuss your challenges and explore how we can help you achieve your strategic goals.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-light" onclick="openConsultationModal()">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Free Consultation
+                    </button>
+                    <button class="btn btn-outline-light" onclick="scrollToSection('contact')">
+                        <i class="fas fa-phone"></i>
+                        Contact Us Directly
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Contact Us</span>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">
+                    Ready to start your transformation journey? Contact us today for expert consulting solutions.
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Our Location</h4>
+                            <p>Akwa Ibom State, Nigeria</p>
+                            <span>Headquarters serving clients nationwide</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone Number</h4>
+                            <p>+234 XXX XXX XXXX</p>
+                            <span>Mon - Fri, 8:00 am - 6:00 pm</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Address</h4>
+                            <p>info@finbarrconsult.com</p>
+                            <span>We respond within 24 hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <h3>Send us a Message</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="strategy">Strategic Planning</option>
+                            <option value="analytics">Business Analytics</option>
+                            <option value="process">Process Optimization</option>
+                            <option value="organization">Organizational Development</option>
+                            <option value="digital">Digital Transformation</option>
+                            <option value="risk">Risk Management</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">How can we help you? *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>FINBARR CONSULT</h3>
+                        <span>LIMITED</span>
+                    </div>
+                    <p>Strategic business consulting for sustainable growth and transformation across Nigeria and international markets.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#services">Strategic Planning</a></li>
+                        <li><a href="#services">Business Analytics</a></li>
+                        <li><a href="#services">Process Optimization</a></li>
+                        <li><a href="#services">Organizational Development</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> info@finbarrconsult.com</p>
+                    <p><i class="fas fa-phone"></i> +234 XXX XXX XXXX</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Akwa Ibom, Nigeria</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="kill">&copy; 2024 FINBARR CONSULT LIMITED. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Consultation Modal -->
+    <div id="consultationModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('consultationModal')">&times;</span>
+            <h3 class="modal-title">Schedule a Free Consultation</h3>
+            <p>Fill out the form below and we'll contact you within 24 hours to schedule your free consultation.</p>
+            <form id="consultationForm">
+                <div class="form-group">
+                    <label for="consultName">Full Name *</label>
+                    <input type="text" id="consultName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="consultEmail">Email Address *</label>
+                    <input type="email" id="consultEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="consultCompany">Company</label>
+                    <input type="text" id="consultCompany" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="consultService">Service Interest</label>
+                    <select id="consultService" name="service">
+                        <option value="">Select a service</option>
+                        <option value="strategy">Strategic Planning</option>
+                        <option value="analytics">Business Analytics</option>
+                        <option value="process">Process Optimization</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Schedule Consultation</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ===== WEBSITE INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeWebsite();
+        });
+
+        function initializeWebsite() {
+            initNavigation();
+            initSmoothScrolling();
+            initScrollEffects();
+            initCounters();
+            initContactForm();
+            
+            // Hide loading spinner
+            setTimeout(() => {
+                document.getElementById('loadingSpinner').classList.add('hidden');
+            }, 1000);
+        }
+
+        // ===== NAVIGATION =====
+        function initNavigation() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const header = document.getElementById('header');
+
+            // Mobile menu toggle
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on links
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Header background on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // ===== SMOOTH SCROLLING =====
+        function initSmoothScrolling() {
+            const scrollLinks = document.querySelectorAll('a[href^="#"]');
+            
+            scrollLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        function scrollToSection(sectionId) {
+            const targetElement = document.getElementById(sectionId);
+            if (targetElement) {
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // ===== SCROLL EFFECTS =====
+        function initScrollEffects() {
+            const animatedElements = document.querySelectorAll('.service-card, .team-member, .process-step, .testimonial-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+        }
+
+        // ===== COUNTER ANIMATION =====
+        function initCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        }
+
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
+            }, 16);
+        }
+
+        // ===== CONTACT FORM =====
+        function initContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            const consultationForm = document.getElementById('consultationForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Thank you for your message! We will contact you soon.', 'success');
+                    this.reset();
+                });
+            }
+            
+            if (consultationForm) {
+                consultationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Consultation scheduled! We will contact you to confirm.', 'success');
+                    closeModal('consultationModal');
+                    this.reset();
+                });
+            }
+        }
+
+        // ===== MODALS =====
+        function openConsultationModal() {
+            document.getElementById('consultationModal').classList.add('open');
+        }
+
+        function openServiceModal(serviceType) {
+            showNotification('Service details would open here for: ' + serviceType, 'info');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('open');
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('open');
+            }
+        });
+
+        // ===== NOTIFICATIONS =====
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification-${type}`;
+            notification.innerHTML = `
+                <div style="position:fixed; top:20px; right:20px; background:${type === 'success' ? '#10b981' : '#3b82f6'}; color:white; padding:1rem 1.5rem; border-radius:0.5rem; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1); z-index:10000;">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i> ${message}
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // ===== UTILITY FUNCTIONS =====
+        function downloadBrochure() {
+            showNotification('Brochure download feature would be implemented here.', 'info');
+        }
+
+        // Progress bar animation
+        setTimeout(() => {
+            document.querySelector('.progress-fill').style.width = '85%';
+        }, 500);
+    </script>
+</body>
+</html>
