@@ -525,6 +525,7 @@
             justify-content: center;
             transition: all var(--transition-normal);
             box-shadow: var(--shadow-sm);
+            min-height: 80px;
         }
 
         .logo-item:hover {
@@ -1339,6 +1340,7 @@
             
             .logo-item {
                 padding: var(--space-sm);
+                min-height: 60px;
             }
             
             .feature {
