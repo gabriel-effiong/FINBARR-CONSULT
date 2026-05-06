@@ -538,6 +538,10 @@
             color: var(--primary-blue);
         }
 
+        .logo-item span {
+            white-space: nowrap;
+        }
+
         /* ===== ABOUT SECTION ===== */
         .about {
             padding: var(--space-2xl) 0;
