@@ -536,6 +536,7 @@
         .logo-item i {
             font-size: 1.5rem;
             color: var(--primary-blue);
+            transition: 0.3s ease;
         }
 
         .logo-item span {
