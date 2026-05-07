@@ -867,9 +867,10 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: var(--space-xl);
             margin-bottom: var(--space-2xl);
+            align-items: start;
         }
 
         .team-member {
@@ -878,6 +879,7 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             transition: all var(--transition-normal);
+            min-height: 460px;
         }
 
         .team-member:hover {
@@ -896,10 +898,13 @@
         }
 
         .member-photo {
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             border-radius: 50%;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            border: 8px solid var(--white);
         }
 
         .member-info {
