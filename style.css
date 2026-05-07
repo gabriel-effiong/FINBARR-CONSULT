@@ -750,6 +750,28 @@
             color: var(--primary-blue);
         }
 
+        .experince .experience-date-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+
+        .experince .experience-date {
+            font-weight: 700;
+            color: var(--dark-blue);
+            white-space: nowrap;
+            margin: 0;
+        }
+
+        .experince .date-line {
+            flex: 1;
+            display: block;
+            height: 4px;
+            background: var(--primary-blue);
+            border-radius: 999px;
+        }
+
         .experince .experience-visual {
             display: flex;
             justify-content: center;
