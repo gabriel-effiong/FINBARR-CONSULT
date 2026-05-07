@@ -276,6 +276,15 @@
             display: block;
         }
 
+        .nav-logo .logo-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            box-shadow: var(--shadow-md);
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -586,6 +595,52 @@
             flex-wrap: wrap;
         }
 
+        .about-quote {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 40px -10px rgba(30, 58, 138, 0.3);
+        }
+
+        .quote-text {
+            font-size: 1.75rem;
+            font-style: italic;
+            color: var(--white);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+            font-family: var(--font-secondary);
+            font-weight: 500;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--space-lg);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .quote-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+            margin: 0;
+            max-width: 280px;
+        }
+
         /* ===== SERVICES SECTION ===== */
         .services {
             padding: var(--space-2xl) 0;
@@ -740,14 +795,22 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--space-xl);
-            align-items: center;
+            align-items: stretch;
+        }
+
+        .experince .experience-card-image,
+        .experince .experience-meta {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100%;
         }
 
         .experince .experience-card-image {
             border-radius: var(--radius-xl);
             overflow: hidden;
             box-shadow: var(--shadow-lg);
-            min-height: 260px;
+            min-height: 320px;
             background: var(--light-gray);
         }
 
@@ -771,27 +834,11 @@
             color: var(--primary-blue);
         }
 
-        .experince .experience-date-row {
-            display: flex;
-            align-items: center;
-            gap: var(--space-xs);
-            margin-top: var(--space-lg);
-        }
-
         .experince .experience-date {
             font-weight: 700;
             color: var(--dark-blue);
             white-space: nowrap;
             margin: 0;
-        }
-
-        .experince .date-line {
-            flex: 1;
-            display: block;
-            height: 4px;
-            background: var(--primary-blue);
-            border-radius: 999px;
-            margin-left: 0;
         }
 
         @media (max-width: 980px) {
@@ -845,22 +892,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
         }
 
-        .image-placeholder {
-            width: 120px;
-            height: 120px;
-            background: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-md);
-        }
-
-        .image-placeholder i {
-            font-size: 3rem;
-            color: var(--primary-blue);
+        .member-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
         }
 
         .member-info {
@@ -1097,6 +1136,16 @@
         .footer-section h4 {
             margin-bottom: var(--space-md);
             color: var(--white);
+        }
+
+        .footer-logo .logo-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin-bottom: var(--space-md);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .footer-section ul {
@@ -1384,16 +1433,7 @@
             .member-image {
                 height: 200px;
             }
-            
-            .image-placeholder {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .image-placeholder i {
-                font-size: 2.5rem;
-            }
-            
+                        
             .testimonial-card {
                 padding: var(--space-lg);
             }
