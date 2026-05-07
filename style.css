@@ -887,7 +887,7 @@
 
         .member-image {
             position: relative;
-            height: 250px;
+            height: 220px;
             background: var(--light-blue);
             display: flex;
             align-items: center;
@@ -896,8 +896,8 @@
         }
 
         .member-photo {
-            width: 220px;
-            height: 220px;
+            width: 180px;
+            height: 180px;
             object-fit: cover;
             border-radius: 50%;
         }
