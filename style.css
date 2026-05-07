@@ -902,6 +902,18 @@
             border-radius: var(--radius-xl) var(--radius-xl) 0 0;
         }
 
+        .team-member:first-child .member-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .team-member:nth-child(2) .member-image,
+        .team-member:nth-child(3) .member-image {
+            display: none;
+        }
+
         .member-info {
             padding: var(--space-xl);
         }
