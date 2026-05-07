@@ -708,6 +708,80 @@
             box-shadow: var(--shadow-md);
         }
 
+        /* ===== EXPERIENCE SECTION ===== */
+        .experince {
+            padding: var(--space-2xl) 0;
+            background: var(--light-blue);
+        }
+
+        .experince .experience-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: var(--space-2xl);
+            align-items: center;
+        }
+
+        .experince .experience-intro {
+            max-width: 670px;
+            margin-bottom: var(--space-xl);
+            color: var(--dark-gray);
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .experince .experience-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            padding: var(--space-xl);
+            border: 1px solid rgba(30, 64, 175, 0.08);
+        }
+
+        .experince .experience-meta p {
+            margin-bottom: 1.25rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .experince .experience-meta span {
+            display: inline-block;
+            min-width: 140px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .experince .experience-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .experince .experience-image {
+            width: 100%;
+            max-width: 520px;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+        }
+
+        .experince .experience-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 900px) {
+            .experince .experience-content {
+                grid-template-columns: 1fr;
+            }
+
+            .experince .experience-meta span {
+                display: block;
+                min-width: auto;
+                margin-bottom: 0.35rem;
+            }
+        }
+
         /* ===== TEAM SECTION ===== */
         .team {
             padding: var(--space-2xl) 0;
