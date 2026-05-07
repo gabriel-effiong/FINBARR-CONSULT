@@ -441,6 +441,8 @@
         }
 
         .consulting-card {
+            position: relative;
+            z-index: 2;
             background: var(--white);
             padding: var(--space-xl);
             border-radius: var(--radius-xl);
@@ -480,8 +482,10 @@
 
         .floating-elements {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            inset: 0;
+            width: auto;
+            height: auto;
+            pointer-events: none;
         }
 
         .element {
@@ -502,9 +506,9 @@
             color: var(--primary-blue);
         }
 
-        .element.strategy { top: 20%; left: 10%; animation-delay: 0s; }
-        .element.growth { top: 60%; right: 20%; animation-delay: 1s; }
-        .element.analytics { bottom: 20%; left: 30%; animation-delay: 2s; }
+        .element.strategy { top: 10%; left: -30px; animation-delay: 0s; }
+        .element.growth { top: 45%; right: -30px; transform: translateY(-50%); animation-delay: 1s; }
+        .element.analytics { bottom: -30px; left: 30%; animation-delay: 2s; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
@@ -923,14 +927,21 @@
             padding-top: var(--space-lg);
         }
 
+        .name {
+            color: var(--dark-blue);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: var(--space-lg) var(--space-lg) 0 var(--space-lg);
+        }
+
         .position {
             color: var(--primary-blue);
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin: 0 var(--space-lg) 1rem var(--space-lg);
         }
 
         .bio {
-            margin-bottom: var(--space-md);
+            margin: 0 var(--space-lg) var(--space-md) var(--space-lg);
             font-size: 0.95rem;
             line-height: 1.5;
         }
@@ -1430,6 +1441,10 @@
             .consulting-card {
                 max-width: 100%;
                 padding: var(--space-lg);
+            }
+            
+            .floating-elements {
+                display: none;
             }
             
             .floating-elements .element {
