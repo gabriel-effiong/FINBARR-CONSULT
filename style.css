@@ -867,10 +867,10 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--space-xl);
             margin-bottom: var(--space-2xl);
-            align-items: start;
+            align-items: stretch;
         }
 
         .team-member {
@@ -879,7 +879,8 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             transition: all var(--transition-normal);
-            min-height: 460px;
+            display: flex;
+            flex-direction: column;
         }
 
         .team-member:hover {
@@ -895,6 +896,7 @@
             align-items: center;
             justify-content: center;
             border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            flex-shrink: 0;
         }
 
         .member-photo {
@@ -911,16 +913,34 @@
             padding: var(--space-xl);
         }
 
+        .team-member .position,
+        .team-member .bio,
+        .team-member .expertise {
+            padding: 0 var(--space-lg) var(--space-md) var(--space-lg);
+        }
+
+        .team-member .position:first-of-type {
+            padding-top: var(--space-lg);
+        }
+
         .position {
             color: var(--primary-blue);
             font-weight: 600;
             margin-bottom: 1rem;
         }
 
+        .bio {
+            margin-bottom: var(--space-md);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         .expertise {
             display: flex;
             flex-wrap: wrap;
             gap: var(--space-xs);
+            margin-top: auto;
+            padding-bottom: var(--space-lg);
         }
 
         .expertise-tag {
