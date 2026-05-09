@@ -877,6 +877,22 @@
             align-items: stretch;
         }
 
+            .team-member {
+        background: var(--white);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: all var(--transition-normal);
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 100%;
+        min-height: 750px; /* adjust if needed */
+    }
+
+
         .team-member {
             background: var(--white);
             border-radius: var(--radius-xl);
