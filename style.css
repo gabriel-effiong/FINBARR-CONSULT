@@ -5,6 +5,10 @@
             box-sizing: border-box;
         }
 
+        .html {
+            overflow: hidden;
+        }
+        
         :root {
             --primary-blue: #1e40af;
             --secondary-blue: #3b82f6;
@@ -883,6 +887,7 @@
         overflow: hidden;
         box-shadow: var(--shadow-md);
         transition: all var(--transition-normal);
+        padding-bottom: 20px;
         
         display: flex;
         flex-direction: column;
