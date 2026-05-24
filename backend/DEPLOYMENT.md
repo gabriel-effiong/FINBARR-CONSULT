@@ -53,8 +53,7 @@
 
 ### Prerequisites
 
-- Heroku account
-- Heroku CLI installed
+-  
 
 ### Steps
 
