@@ -1610,6 +1610,25 @@ p {
     }
 }
 
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .about-card {
+        padding: 20px;
+    }
+
+    .about-tags {
+        gap: 10px;
+    }
+
+    .about-tags span {
+        width: 100%;
+        text-align: center;
+    }
+}
+
 .whatsapp-float{
     position: fixed;
     width: 60px;
