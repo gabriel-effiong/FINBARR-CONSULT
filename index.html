@@ -951,6 +951,12 @@
             hamburger.addEventListener('click', function() {
                 this.classList.toggle('active');
                 navMenu.classList.toggle('active');
+                
+                if (this.classList.contains('active')) {
+                    this.innerHTML = 'X';
+                } else {
+                    this.innerHTML = '☰';
+                }    
             });
 
             // Close mobile menu when clicking on links
@@ -958,6 +964,9 @@
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
+
+                    // reset icon back to hamburger
+                    hamburger.innerHTML = '☰';
                 });
             });
 
