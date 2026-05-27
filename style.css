@@ -296,6 +296,8 @@ p {
     list-style: none;
     gap: var(--space-lg);
     align-items: center;
+    overflow-x: hidden;
+    max-width: 100w;
 }
 
 .nav-link {
