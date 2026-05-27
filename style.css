@@ -8,7 +8,14 @@
 .html, body{
     overflow: hidden;
     width: 100%;
+}    
+
+.html, body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
+
         
 :root {
     --primary-blue: #1e40af;
