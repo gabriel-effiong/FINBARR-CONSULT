@@ -356,6 +356,8 @@
             }
         }
     </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <!-- Login Section -->
@@ -425,7 +427,35 @@
     </div>
 
     <script>
-        const API_BASE_URL = 'http://localhost:5000/api'; // Change to your backend URL
+        const supabaseUrl = '"https://supabase.com/dashboard/project/zbmuvcegrtdhlwthhtaa/settings/api-keys"';
+        const supabaseKey = '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpibXV2Y2VncnRkaGx3dGhodGFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDM3MDEsImV4cCI6MjA5NTU3OTcwMX0.US3YMlrdgPh2e0Z-vY2jq8pSoOZiiIvYTW9XgVhh2R4"';
+
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+          const errorDiv = document.getElementById('loginError');
+
+          const { data, error } = await supabaseClient.auth.signInWithPassword({
+            email: username,
+            password: password
+          });
+
+          if (error) {
+              errorDiv.textContent = error.message;
+          } else {
+              localStorage.setItem('adminLoggedIn', 'true');
+
+              document.getElementById('loginSection').style.display = 'none';
+              document.getElementById('dashboard').style.display = 'block';
+
+              loadDashboardData();
+          }
+});        
+
 
         // ===== AUTHENTICATION =====
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -455,7 +485,7 @@
             } catch (error) {
                 errorDiv.textContent = 'Error connecting to server';
             }
-        });
+        // });
 
         function logout() {
             localStorage.removeItem('adminToken');
