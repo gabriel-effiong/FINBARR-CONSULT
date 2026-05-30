@@ -1,17 +1,22 @@
 // ===== API CONFIGURATION =====
-const API_BASE_URL = 'https://your-backend-url.com/api'; // Change this to your backend URL
-// For local development: 'http://localhost:5000/api'
+const supabaseUrl = "https://zbmuvcegrtdhlwthhtaa.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpibXV2Y2VncnRkaGx3dGhodGFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDM3MDEsImV4cCI6MjA5NTU3OTcwMX0.US3YMlrdgPh2e0Z-vY2jq8pSoOZiiIvYTW9XgVhh2R4";
+
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 // ===== CONTACT FORM SUBMISSION =====
 async function submitContactForm(formData) {
   try {
-    const response = await fetch(`${API_BASE_URL}/contact`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    const { error } = await supabaseClient
+      .from("contact_messages")
+      .insert([formData]);
+
+    if (error) {
+      console.error(error);
+      showNotification("Error submitting form", "error");
+    } else {
+      showNotification("Message sent successfully!", "success");
+    }
 
     const data = await response.json();
 
@@ -33,13 +38,26 @@ async function submitContactForm(formData) {
 // ===== CONSULTATION BOOKING =====
 async function submitConsultationForm(formData) {
   try {
-    const response = await fetch(`${API_BASE_URL}/consultation`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    const { data, error } = await supabaseClient
+      .from("contact_messages")
+      .insert([
+        {
+          fullName,
+          email,
+          company,
+          phone,
+          service,
+          message,
+        },
+      ]);
+
+    if (error) {
+      console.error(error);
+      showNotification("Error submitting form", "error");
+    } else {
+      showNotification("Message sent successfully!", "success");
+      document.getElementById("contactForm").reset();
+    }
 
     const data = await response.json();
 
