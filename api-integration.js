@@ -2,7 +2,10 @@
 const supabaseUrl = "https://zbmuvcegrtdhlwthhtaa.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpibXV2Y2VncnRkaGx3dGhodGFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDM3MDEsImV4cCI6MjA5NTU3OTcwMX0.US3YMlrdgPh2e0Z-vY2jq8pSoOZiiIvYTW9XgVhh2R4";
 
-const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseClient = supabase.createClient(
+  supabaseUrl,
+  supabaseKey
+);
 
 // ===== CONTACT FORM SUBMISSION =====
 async function submitContactForm(formData) {
@@ -14,9 +17,17 @@ async function submitContactForm(formData) {
     if (error) {
       console.error(error);
       showNotification("Error submitting form", "error");
-    } else {
-      showNotification("Message sent successfully!", "success");
+      return false;
     }
+
+    showNotification("Message sent successfully!", "success");
+    return true;
+
+  } catch (error) {
+    console.error(error);
+    showNotification("submitting went wrong", "error");
+    return false;
+  }
 
     const data = await response.json();
 
@@ -28,12 +39,7 @@ async function submitContactForm(formData) {
       showNotification(data.message || 'Error submitting form. Please try again.', 'error');
       return false;
     }
-  } catch (error) {
-    console.error('Error:', error);
-    showNotification('Error submitting form. Please try again later.', 'error');
-    return false;
-  }
-}
+  
 
 // ===== CONSULTATION BOOKING =====
 async function submitConsultationForm(formData) {
