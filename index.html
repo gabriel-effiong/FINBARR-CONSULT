@@ -1,133 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINBARR CONSULT LIMITED | Strategic Business Consulting Solutions</title>
-    <meta name="description" content="FINBARR CONSULT LIMITED - Premier business consulting firm providing strategic solutions for growth and transformation across Nigeria">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      FINBARR CONSULT LIMITED | Strategic Business Consulting Solutions
+    </title>
+    <meta
+      name="description"
+      content="FINBARR CONSULT LIMITED - Premier business consulting firm providing strategic solutions for growth and transformation across Nigeria"
+    />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACAkAAcKz1s0AAAAASUVORK5CYII=">
-    
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACAkAAcKz1s0AAAAASUVORK5CYII="
+    />
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <!-- Loading Spinner -->
     <div class="loading-spinner" id="loadingSpinner">
-        <div class="spinner"></div>
+      <div class="spinner"></div>
     </div>
 
-    
     <!-- Header & Navigation -->
     <header class="header" id="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-container">
-                    <div class="nav-logo">
-                        <img src="images/logo.jpg" alt="FINBARR CONSULT LIMITED" class="logo-image" />
-                    </div>
-                    
-                    <ul class="nav-menu" id="navMenu">
-                        <li><a href="#home" class="nav-link active">Home</a></li>
-                        <li><a href="#about" class="nav-link">About</a></li>
-                        <li><a href="#services" class="nav-link">Services</a></li>
-                        <li><a href="#solutions" class="nav-link">Solutions</a></li>
-                        <li><a href="#team" class="nav-link">Team</a></li>
-                        <li><a href="#clients" class="nav-link">Clients</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
-                    </ul>
-                    
-                    <div class="nav-cta">
-                        <button class="cta-button" onclick="openConsultationModal()">
-                            <i class="fas fa-calendar-check"></i>
-                            Get Consultation
-                        </button>
-                    </div>
-                    
-                    <div class="hamburger" id="hamburger">
-                         <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
+      <nav class="navbar">
+        <div class="container">
+          <div class="nav-container">
+            <div class="nav-logo">
+              <img
+                src="images/logo.jpg"
+                alt="FINBARR CONSULT LIMITED"
+                class="logo-image"
+              />
             </div>
-        </nav>
+
+            <ul class="nav-menu" id="navMenu">
+              <li><a href="#home" class="nav-link active">Home</a></li>
+              <li><a href="#about" class="nav-link">About</a></li>
+              <li><a href="#services" class="nav-link">Services</a></li>
+              <li><a href="#solutions" class="nav-link">Solutions</a></li>
+              <li><a href="#team" class="nav-link">Team</a></li>
+              <li><a href="#clients" class="nav-link">Clients</a></li>
+              <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-cta">
+              <button class="cta-button" onclick="openConsultationModal()">
+                <i class="fas fa-calendar-check"></i>
+                Get Consultation
+              </button>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="hero-pattern"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        Strategic <span class="highlight">Business Consulting</span> for Sustainable Growth
-                    </h1>
-                    <p class="hero-subtitle">
-                        Transforming businesses through innovative strategies, data-driven insights, and expert guidance to drive measurable results and long-term success across Nigeria and beyond.
-                    </p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-primary" onclick="scrollToSection('services')">
-                            <i class="fas fa-chart-line"></i>
-                            Our Services
-                        </button>
-                        <button class="btn btn-secondary" onclick="openConsultationModal()">
-                            <i class="fas fa-handshake"></i>
-                            Free Consultation
-                        </button>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <h3 data-count="50">0</h3>
-                            <p>Projects Completed</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3 data-count="15">0</h3>
-                            <p>Years Experience</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3 data-count="95">0</h3>
-                            <p>Client Satisfaction</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3 data-count="30">0</h3>
-                            <p>Industry Partners</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="consulting-card">
-                        <div class="card-header">
-                            <i class="fas fa-bullseye"></i>
-                            <h4>Business Excellence</h4>
-                        </div>
-                        <div class="card-content">
-                            <p>Driving growth through strategic innovation and operational excellence</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill"></div>
-                            </div>
-                            <span>Performance Improvement</span>
-                        </div>
-                    </div>
-                    <div class="floating-elements">
-                        <div class="element strategy">
-                            <i class="fas fa-chess-queen"></i>
-                        </div>
-                        <div class="element growth">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <div class="element analytics">
-                            <i class="fas fa-chart-pie"></i>
-                        </div>
-                    </div>
-                </div>
+      <div class="hero-background">
+        <div class="hero-pattern"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              Strategic <span class="highlight">Business Consulting</span> for
+              Sustainable Growth
+            </h1>
+            <p class="hero-subtitle">
+              Transforming businesses through innovative strategies, data-driven
+              insights, and expert guidance to drive measurable results and
+              long-term success across Nigeria and beyond.
+            </p>
+            <div class="hero-buttons">
+              <button
+                class="btn btn-primary"
+                onclick="scrollToSection('services')"
+              >
+                <i class="fas fa-chart-line"></i>
+                Our Services
+              </button>
+              <button
+                class="btn btn-secondary"
+                onclick="openConsultationModal()"
+              >
+                <i class="fas fa-handshake"></i>
+                Free Consultation
+              </button>
             </div>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <h3 data-count="50">0</h3>
+                <p>Projects Completed</p>
+              </div>
+              <div class="stat-item">
+                <h3 data-count="15">0</h3>
+                <p>Years Experience</p>
+              </div>
+              <div class="stat-item">
+                <h3 data-count="95">0</h3>
+                <p>Client Satisfaction</p>
+              </div>
+              <div class="stat-item">
+                <h3 data-count="30">0</h3>
+                <p>Industry Partners</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="consulting-card">
+              <div class="card-header">
+                <i class="fas fa-bullseye"></i>
+                <h4>Business Excellence</h4>
+              </div>
+              <div class="card-content">
+                <p>
+                  Driving growth through strategic innovation and operational
+                  excellence
+                </p>
+                <div class="progress-bar">
+                  <div class="progress-fill"></div>
+                </div>
+                <span>Performance Improvement</span>
+              </div>
+            </div>
+            <div class="floating-elements">
+              <div class="element strategy">
+                <i class="fas fa-chess-queen"></i>
+              </div>
+              <div class="element growth">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="element analytics">
+                <i class="fas fa-chart-pie"></i>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Trust Bar
@@ -165,517 +195,649 @@
 
     <!-- About Section -->
     <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <span class="section-badge">About Us</span>
-                    <h2 class="section-title">About FINBARR CONSULT LIMITED</h2>
-                    <p class="lead-text">
-                      Finbarr Consults Limited is a forward-thinking, multi-disciplinary consulting firm
-                      committed to delivering high-impact solutions in corporate training,strategic communication,
-                      public relations, leadership development, and organizational performance enhancement.
-                    </p>
-                    <p>
-                        We specialize in equipping organizations with the knowledge, tools, and strategies required to navigate complex business environments, strengthen institutional capacity, and achieve sustainable growth. 
-                        Our approach blends global best practices with local insights, ensuring practical, results-driven outcomes for our clients.
-                    </p>
-                    
-                    <div class="about-features">
-                        
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h4>Our Vision</h4>
-                                <p>To be a leading consulting firm in Africa, recognized for transforming organizations through innovative training, 
-                                   strategic communication, and sustainable development solutions.
-                                </p>
-                            </div>
-                        </div>
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <span class="section-badge">About Us</span>
+            <h2 class="section-title">About FINBARR CONSULT LIMITED</h2>
+            <p class="lead-text">
+              Finbarr Consults Limited is a forward-thinking, multi-disciplinary
+              consulting firm committed to delivering high-impact solutions in
+              corporate training,strategic communication, public relations,
+              leadership development, and organizational performance
+              enhancement.
+            </p>
+            <p>
+              We specialize in equipping organizations with the knowledge,
+              tools, and strategies required to navigate complex business
+              environments, strengthen institutional capacity, and achieve
+              sustainable growth. Our approach blends global best practices with
+              local insights, ensuring practical, results-driven outcomes for
+              our clients.
+            </p>
 
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h4>Our Mission</h4>
-                                <p>
-                                    To empower individuals and institutions with cutting-edge knowledge, skills, 
-                                    and strategies that enhance performance,build strong brands, and drive sustainable impact.
-                                </p>
-                            </div>
-                        </div>
+            <div class="about-features">
+              <div class="feature">
+                <div class="feature-icon">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <div class="feature-content">
+                  <h4>Our Vision</h4>
+                  <p>
+                    To be a leading consulting firm in Africa, recognized for
+                    transforming organizations through innovative training,
+                    strategic communication, and sustainable development
+                    solutions.
+                  </p>
+                </div>
+              </div>
 
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h4>Partnership Focus</h4>
-                                <p>Building long-term relationships based on trust, results, and mutual success</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="about-actions">
-                        <button class="btn btn-primary" onclick="scrollToSection('team')">
-                            Meet Our Team
-                        </button>
-                        <button class="btn btn-outline" onclick="downloadBrochure()">
-                            <i class="fas fa-download"></i>
-                            Download Brochure
-                        </button>
-                    </div>
+              <div class="feature">
+                <div class="feature-icon">
+                  <i class="fas fa-bullseye"></i>
                 </div>
-                
-                <div class="about-quote">
-                    <div class="quote-box">
-                        <p class="quote-text">"If You Do Nothing, You Will Become Nothing"</p>
-                        <p class="quote-author">— FINBARR CONSULTS LIMITED</p>
-                        <p class="quote-description">This philosophy drives every engagement we undertake. We believe that intentional action — sustained learning, strategic communication, and purposeful leadership — is the bedrock of lasting organizational success.</p>
-                    </div>
+                <div class="feature-content">
+                  <h4>Our Mission</h4>
+                  <p>
+                    To empower individuals and institutions with cutting-edge
+                    knowledge, skills, and strategies that enhance
+                    performance,build strong brands, and drive sustainable
+                    impact.
+                  </p>
                 </div>
+              </div>
+
+              <div class="feature">
+                <div class="feature-icon">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <div class="feature-content">
+                  <h4>Partnership Focus</h4>
+                  <p>
+                    Building long-term relationships based on trust, results,
+                    and mutual success
+                  </p>
+                </div>
+              </div>
             </div>
+
+            <div class="about-actions">
+              <button class="btn btn-primary" onclick="scrollToSection('team')">
+                Meet Our Team
+              </button>
+              <button class="btn btn-outline" onclick="downloadBrochure()">
+                <i class="fas fa-download"></i>
+                Download Brochure
+              </button>
+            </div>
+          </div>
+
+          <div class="about-quote">
+            <div class="quote-box">
+              <p class="quote-text">
+                "If You Do Nothing, You Will Become Nothing"
+              </p>
+              <p class="quote-author">— FINBARR CONSULTS LIMITED</p>
+              <p class="quote-description">
+                This philosophy drives every engagement we undertake. We believe
+                that intentional action — sustained learning, strategic
+                communication, and purposeful leadership — is the bedrock of
+                lasting organizational success.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Our Core Services</span>
-                <h2 class="section-title">Comprehensive Consulting Solutions</h2>
-                <p class="section-subtitle">
-                    Comprehensive consulting solutions designed to transform your organization from the inside out.
-                </p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3>Corporate Training & Capacity Building</h3>
-                    <p>Tailored programs in leadership, communication, productivity, and organizational excellence.</p>
-                    <!-- <ul class="service-features"> -->
-                        <!-- <li><i class="fas fa-check"></i> Market Analysis & Research</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Competitive Strategy Development</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Long-term Growth Planning</li> -->
-                    <!-- </ul> -->
-                    <!-- <button class="service-cta" onclick="openServiceModal('strategy')"> -->
-                        <!-- Learn More -->
-                        <!-- <i class="fas fa-arrow-right"></i> -->
-                    <!-- </button> -->
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>Media Engagement & Public Relations</h3>
-                    <p>Strategic advisory on media relations, reputation management, crisis communication, and stakeholder engagement.</p>
-                    <!-- <ul class="service-features"> -->
-                        <!-- <li><i class="fas fa-check"></i> Performance Metrics & KPI Development</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Advanced Data Visualization</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Predictive Analysis & Forecasting</li> -->
-                    <!-- </ul> -->
-                    <!-- <button class="service-cta" onclick="openServiceModal('analytics')"> -->
-                        <!-- Learn More -->
-                        <!-- <i class="fas fa-arrow-right"></i> -->
-                    <!-- </button> -->
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>Sustainability & ESG Advisory</h3>
-                    <p>Integration of sustainability principles into business operations, reporting, and corporate communication.</p>
-                    <!-- <ul class="service-features"> -->
-                        <!-- <li><i class="fas fa-check"></i> Efficiency Improvement Strategies</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Cost Reduction Initiatives</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Comprehensive Workflow Analysis</li> -->
-                    <!-- </ul> -->
-                    <!-- <button class="service-cta" onclick="openServiceModal('process')"> -->
-                        <!-- Learn More -->
-                        <!-- <i class="fas fa-arrow-right"></i> -->
-                    <!-- </button> -->
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Organizational Development</h3>
-                    <p>Build high-performing teams and organizational structures that drive success and foster innovation.</p>
-                    <!-- <ul class="service-features"> -->
-                        <!-- <li><i class="fas fa-check"></i> Leadership Development Programs</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Team Building & Collaboration</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Change Management Strategies</li> -->
-                    <!-- </ul> -->
-                    <!-- <button class="service-cta" onclick="openServiceModal('organization')"> -->
-                        <!-- Learn More -->
-                        <!-- <i class="fas fa-arrow-right"></i> -->
-                    <!-- </button> -->
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Leadership Development</h3>
-                    <p>Training emerging and established leaders on performance, influence, and strategic thinking.</p>
-                    <!-- <ul class="service-features"> -->
-                        <!-- <li><i class="fas fa-check"></i> Technology Integration Planning</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Digital Strategy Development</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Innovation Consulting</li> -->
-                    <!-- </ul> -->
-                    <!-- <button class="service-cta" onclick="openServiceModal('digital')"> -->
-                        <!-- Learn More -->
-                        <!-- <i class="fas fa-arrow-right"></i> -->
-                    <!-- </button> -->
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Branding & Reputation Management</h3>
-                    <p>Development of strong corporate identities, brand positioning, and public perception strategies.</p>
-                    <!-- <ul class="service-features"> -->
-                        <!-- <li><i class="fas fa-check"></i> Comprehensive Risk Assessment</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Regulatory Compliance</li> -->
-                        <!-- <li><i class="fas fa-check"></i> Crisis Management Planning</li> -->
-                    <!-- </ul> -->
-                    <!-- <button class="service-cta" onclick="openServiceModal('risk')"> -->
-                        <!-- Learn More -->
-                        <!-- <i class="fas fa-arrow-right"></i> -->
-                    <!-- </button> -->
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Our Core Services</span>
+          <h2 class="section-title">Comprehensive Consulting Solutions</h2>
+          <p class="section-subtitle">
+            Comprehensive consulting solutions designed to transform your
+            organization from the inside out.
+          </p>
         </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <h3>Corporate Training & Capacity Building</h3>
+            <p>
+              Tailored programs in leadership, communication, productivity, and
+              organizational excellence.
+            </p>
+            <!-- <ul class="service-features"> -->
+            <!-- <li><i class="fas fa-check"></i> Market Analysis & Research</li> -->
+            <!-- <li><i class="fas fa-check"></i> Competitive Strategy Development</li> -->
+            <!-- <li><i class="fas fa-check"></i> Long-term Growth Planning</li> -->
+            <!-- </ul> -->
+            <!-- <button class="service-cta" onclick="openServiceModal('strategy')"> -->
+            <!-- Learn More -->
+            <!-- <i class="fas fa-arrow-right"></i> -->
+            <!-- </button> -->
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h3>Media Engagement & Public Relations</h3>
+            <p>
+              Strategic advisory on media relations, reputation management,
+              crisis communication, and stakeholder engagement.
+            </p>
+            <!-- <ul class="service-features"> -->
+            <!-- <li><i class="fas fa-check"></i> Performance Metrics & KPI Development</li> -->
+            <!-- <li><i class="fas fa-check"></i> Advanced Data Visualization</li> -->
+            <!-- <li><i class="fas fa-check"></i> Predictive Analysis & Forecasting</li> -->
+            <!-- </ul> -->
+            <!-- <button class="service-cta" onclick="openServiceModal('analytics')"> -->
+            <!-- Learn More -->
+            <!-- <i class="fas fa-arrow-right"></i> -->
+            <!-- </button> -->
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <h3>Sustainability & ESG Advisory</h3>
+            <p>
+              Integration of sustainability principles into business operations,
+              reporting, and corporate communication.
+            </p>
+            <!-- <ul class="service-features"> -->
+            <!-- <li><i class="fas fa-check"></i> Efficiency Improvement Strategies</li> -->
+            <!-- <li><i class="fas fa-check"></i> Cost Reduction Initiatives</li> -->
+            <!-- <li><i class="fas fa-check"></i> Comprehensive Workflow Analysis</li> -->
+            <!-- </ul> -->
+            <!-- <button class="service-cta" onclick="openServiceModal('process')"> -->
+            <!-- Learn More -->
+            <!-- <i class="fas fa-arrow-right"></i> -->
+            <!-- </button> -->
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Organizational Development</h3>
+            <p>
+              Build high-performing teams and organizational structures that
+              drive success and foster innovation.
+            </p>
+            <!-- <ul class="service-features"> -->
+            <!-- <li><i class="fas fa-check"></i> Leadership Development Programs</li> -->
+            <!-- <li><i class="fas fa-check"></i> Team Building & Collaboration</li> -->
+            <!-- <li><i class="fas fa-check"></i> Change Management Strategies</li> -->
+            <!-- </ul> -->
+            <!-- <button class="service-cta" onclick="openServiceModal('organization')"> -->
+            <!-- Learn More -->
+            <!-- <i class="fas fa-arrow-right"></i> -->
+            <!-- </button> -->
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h3>Leadership Development</h3>
+            <p>
+              Training emerging and established leaders on performance,
+              influence, and strategic thinking.
+            </p>
+            <!-- <ul class="service-features"> -->
+            <!-- <li><i class="fas fa-check"></i> Technology Integration Planning</li> -->
+            <!-- <li><i class="fas fa-check"></i> Digital Strategy Development</li> -->
+            <!-- <li><i class="fas fa-check"></i> Innovation Consulting</li> -->
+            <!-- </ul> -->
+            <!-- <button class="service-cta" onclick="openServiceModal('digital')"> -->
+            <!-- Learn More -->
+            <!-- <i class="fas fa-arrow-right"></i> -->
+            <!-- </button> -->
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Branding & Reputation Management</h3>
+            <p>
+              Development of strong corporate identities, brand positioning, and
+              public perception strategies.
+            </p>
+            <!-- <ul class="service-features"> -->
+            <!-- <li><i class="fas fa-check"></i> Comprehensive Risk Assessment</li> -->
+            <!-- <li><i class="fas fa-check"></i> Regulatory Compliance</li> -->
+            <!-- <li><i class="fas fa-check"></i> Crisis Management Planning</li> -->
+            <!-- </ul> -->
+            <!-- <button class="service-cta" onclick="openServiceModal('risk')"> -->
+            <!-- Learn More -->
+            <!-- <i class="fas fa-arrow-right"></i> -->
+            <!-- </button> -->
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Solutions Section -->
     <section id="solutions" class="solutions">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Our Approach</span>
-                <h2 class="section-title">Proven Methodology for Success</h2>
-                <p class="section-subtitle">
-                    At Finbarr Consults Limited, we adopt a client-centered and results-oriented approach.
-                </p>
-            </div>
-            
-            <div class="solutions-process">
-                <div class="process-step">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <h3>Customize to Your Goals</h3>
-                        <p>Customizing training to align with organizational goals.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <h3>Strategy Development</h3>
-                        <p>
-                            Combining theory with practical, real-world case studies.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <h3>World-Class Facilitators</h3>
-                        <p>Leveraging experienced facilitators with global exposure,
-                           ensuring every session is relevant, insightful, and transformative.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">04</div>
-                    <div class="step-content">
-                        <h3>Measurable Outcomes</h3>
-                        <p>Delivering measurable outcomes and post-training support</p>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Our Approach</span>
+          <h2 class="section-title">Proven Methodology for Success</h2>
+          <p class="section-subtitle">
+            At Finbarr Consults Limited, we adopt a client-centered and
+            results-oriented approach.
+          </p>
         </div>
+
+        <div class="solutions-process">
+          <div class="process-step">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3>Customize to Your Goals</h3>
+              <p>Customizing training to align with organizational goals.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3>Strategy Development</h3>
+              <p>Combining theory with practical, real-world case studies.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3>World-Class Facilitators</h3>
+              <p>
+                Leveraging experienced facilitators with global exposure,
+                ensuring every session is relevant, insightful, and
+                transformative.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">04</div>
+            <div class="step-content">
+              <h3>Measurable Outcomes</h3>
+              <p>Delivering measurable outcomes and post-training support</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Team Section -->
     <section id="team" class="team">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Our PEOPLE</span>
-                <h2 class="section-title">Led by World-Class Facilitators</h2>
-                <p class="section-subtitle">
-                    Our team of seasoned professionals brings together diverse expertise and a proven track record of driving business success.
-                    With a blend of global credentials and deep experience in African markets,
-                    we deliver consulting solutions that are practical, strategic, and transformative.
-                </p>
-            </div>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="images/dp.jpg" alt="Mr Aniekeme Finbarr" class="member-photo" />
-                    </div>
-                    <p class="name">Mr Aniekeme Finbarr</p>
-                    <p class="position">Dynamic Communicator | Strategic Advisor | Global Leadership Award Winner</p>
-                    <p class="bio">Visionary broadcast journalist, acclaimed author, 
-                        and transformative public servant with over 15 years of expertise in media, 
-                        strategic communication, and social reorientation.
-                    </p>
-                    <div class="expertise">
-                        <span class="expertise-tag">B.A. in Communication Arts</span>
-                        <span class="expertise-tag">MA in Marketing Communication</span>
-                        <span class="expertise-tag">2024 IVLP Global Impact Award</span>
-                        <span class="expertise-tag">International Centre for Journalists</span>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="member-image">
-                        <!-- <img src="images/dp.jpg" alt="Mr Samifeanyi Hart" class="member-photo" /> -->
-                    </div>
-                    <p class="name">Mr Samifeanyi Hart</p>
-                    <p class="position">LLB, BL, LLM, ACIArb, ANIPR, PSLC</p>
-                    <p class="bio">Distinguished legal practitioner and sustainability expert specializing in Environmental Law and Climate Change. 
-                        Former Director-General, Abia State Marketing and Quality Management Agency.
-                    </p>
-                    <div class="expertise">
-                        <span class="expertise-tag">Bachelor of Law (LLB)</span>
-                        <span class="expertise-tag">Master of Environmental Law (LLM)</span>
-                        <span class="expertise-tag">Certification Project Management</span>
-                        <span class="expertise-tag">Certified Database Professional</span>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="member-image">
-                        <!-- <img src="images/dp.jpg" alt="Dr. Uduot Iwok" class="member-photo" /> -->
-                    </div>
-                    <p class="name">Dr. Uduot Iwok</p>
-                    <p class="position">Public Relations & Communication</p>
-                    <p class="bio">Distinguished academic leader with over two decades of expertise spanning banking, corporate management, and higher education. 
-                        Currently Head of Public Relations, University of Uyo.
-                    </p>
-                    <div class="expertise">
-                        <span class="expertise-tag">Educator</span>
-                        <span class="expertise-tag">Bank Manager</span>
-                        <span class="expertise-tag">PhD Business & Communication</span>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Our PEOPLE</span>
+          <h2 class="section-title">Led by World-Class Facilitators</h2>
+          <p class="section-subtitle">
+            Our team of seasoned professionals brings together diverse expertise
+            and a proven track record of driving business success. With a blend
+            of global credentials and deep experience in African markets, we
+            deliver consulting solutions that are practical, strategic, and
+            transformative.
+          </p>
         </div>
+
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="member-image">
+              <img
+                src="images/dp.jpg"
+                alt="Mr Aniekeme Finbarr"
+                class="member-photo"
+              />
+            </div>
+            <p class="name">Mr Aniekeme Finbarr</p>
+            <p class="position">
+              Dynamic Communicator | Strategic Advisor | Global Leadership Award
+              Winner
+            </p>
+            <p class="bio">
+              Visionary broadcast journalist, acclaimed author, and
+              transformative public servant with over 15 years of expertise in
+              media, strategic communication, and social reorientation.
+            </p>
+            <div class="expertise">
+              <span class="expertise-tag">B.A. in Communication Arts</span>
+              <span class="expertise-tag">MA in Marketing Communication</span>
+              <span class="expertise-tag">2024 IVLP Global Impact Award</span>
+              <span class="expertise-tag"
+                >International Centre for Journalists</span
+              >
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="member-image">
+              <!-- <img src="images/dp.jpg" alt="Mr Samifeanyi Hart" class="member-photo" /> -->
+            </div>
+            <p class="name">Mr Samifeanyi Hart</p>
+            <p class="position">LLB, BL, LLM, ACIArb, ANIPR, PSLC</p>
+            <p class="bio">
+              Distinguished legal practitioner and sustainability expert
+              specializing in Environmental Law and Climate Change. Former
+              Director-General, Abia State Marketing and Quality Management
+              Agency.
+            </p>
+            <div class="expertise">
+              <span class="expertise-tag">Bachelor of Law (LLB)</span>
+              <span class="expertise-tag"
+                >Master of Environmental Law (LLM)</span
+              >
+              <span class="expertise-tag"
+                >Certification Project Management</span
+              >
+              <span class="expertise-tag">Certified Database Professional</span>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="member-image">
+              <!-- <img src="images/dp.jpg" alt="Dr. Uduot Iwok" class="member-photo" /> -->
+            </div>
+            <p class="name">Dr. Uduot Iwok</p>
+            <p class="position">Public Relations & Communication</p>
+            <p class="bio">
+              Distinguished academic leader with over two decades of expertise
+              spanning banking, corporate management, and higher education.
+              Currently Head of Public Relations, University of Uyo.
+            </p>
+            <div class="expertise">
+              <span class="expertise-tag">Educator</span>
+              <span class="expertise-tag">Bank Manager</span>
+              <span class="expertise-tag">PhD Business & Communication</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Clients Section -->
     <section id="clients" class="clients">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Our Clients</span>
-                <h2 class="section-title">Trusted Partners</h2>
-                <p class="section-subtitle">
-                 We have successfully delivered training and consulting
-                 services across diverse sectors including government, energy, hospitality, 
-                 construction, and development organizations.
-                </p>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Our Clients</span>
+          <h2 class="section-title">Trusted Partners</h2>
+          <p class="section-subtitle">
+            We have successfully delivered training and consulting services
+            across diverse sectors including government, energy, hospitality,
+            construction, and development organizations.
+          </p>
         </div>
+      </div>
     </section>
-    
+
     <!-- Trust Bar> -->
-     <section class="trust-bar">
-        <div class="container">
-            <p class="trust-title"></p>
-            <div class="client-logos">
-                <div class="logo-item">
-                    <i class="fas fa-landmark"></i>
-                    <span>Government</span>
-                </div>
-                <div class="logo-item">
-                    <i class="fas fa-hard-hat"></i>
-                    <span>Construction</span>
-                </div>
-                <div class="logo-item">
-                    <i class="fas fa-sitemap"></i>
-                    <span>Organisation</span>
-                </div>
-                <div class="logo-item">
-                    <i class="fas fa-concierge-bell"></i>
-                    <span>Hospitality</span>
-                </div>
-                <div class="logo-item">
-                    <i class="fas fa-user-md"></i>
-                    <span>Health Care</span>
-                </div>
-                <div class="logo-item">
-                    <i class="fas fa-building"></i>
-                    <span>Real Estate</span>
-                </div>
-            </div>
+    <section class="trust-bar">
+      <div class="container">
+        <p class="trust-title"></p>
+        <div class="client-logos">
+          <div class="logo-item">
+            <i class="fas fa-landmark"></i>
+            <span>Government</span>
+          </div>
+          <div class="logo-item">
+            <i class="fas fa-hard-hat"></i>
+            <span>Construction</span>
+          </div>
+          <div class="logo-item">
+            <i class="fas fa-sitemap"></i>
+            <span>Organisation</span>
+          </div>
+          <div class="logo-item">
+            <i class="fas fa-concierge-bell"></i>
+            <span>Hospitality</span>
+          </div>
+          <div class="logo-item">
+            <i class="fas fa-user-md"></i>
+            <span>Health Care</span>
+          </div>
+          <div class="logo-item">
+            <i class="fas fa-building"></i>
+            <span>Real Estate</span>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Experience -->
     <section class="experince" id="experience">
-        <div class="container">
-            <div class="experience-header">
-                <h2 class="section-title">Relevant Experience</h2>
-                <p class="experience-intro">
-                    A complete project case study showing client outcomes, training focus, and the proven impact we deliver for brands across hospitality and service sectors.
-                </p>
-            </div>
-
-            
-            <div class="experience-card experience-card--image-left">
-                <div class="experience-card-grid">
-                    <div class="experience-card-image">
-                        <img src="images/experience-photo.jpg" alt="Training session with hotel staff" />
-                    </div>
-                    <div class="experience-meta">
-                        <p><span>Client:</span> Ibom Hotel and Golf Resort</p>
-                        <p><span>Assignment Name:</span> Merits of good work ethics and current management models</p>
-                        <p><span>Brief Description:</span> We were commissioned to train staff of the hotel on excellent customer service and the merits of good work ethics. We X-rayed modern management models and best practices.</p>
-                        <p class="experience-date"><span>Date:</span> May 2021</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="experience-card experience-card--image-left">
-                <div class="experience-card-grid">
-                    <div class="experience-card-image">
-                        <img src="images/experience-photo.jpg" alt="U&K Construction Limited" />
-                    </div>
-                    <div class="experience-meta">
-                        <p><span>Client:</span>U&K Construction Limited</p>
-                        <p><span>Assignment Name:</span>Rudiments of Corporate Branding, Image and Reputation.</p>
-                        <p><span>Brief Description:</span>We were commissioned to train management and staff of
-                            U & K Limited, a civil engineering firm on rudiments of Corporate Branding; Image,
-                            Identity and Reputation.
-                        </p>
-                        <p class="experience-date"><span>Date:</span>January 2022</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="experience-card experience-card--image-left">
-                <div class="experience-card-grid">
-                    <div class="experience-card-image">
-                        <img src="images/experience-photo-2.jpg" alt="Everyday Foods Group training session" />
-                    </div>
-                    <div class="experience-meta">
-                        <p><span>Client:</span> Everyday Foods Group</p>
-                        <p><span>Assignment Name:</span> Annual retreat: Productivity and expansion in a volatile economy</p>
-                        <p><span>Brief Description:</span> We were commissioned to train management and staff of Everyday Foods Group at their annual retreat. Everyday Foods are franchisees of Tantalizers in the region and are opening new outlets in town in the next few weeks.</p>
-                        <p><span>Additional Detail:</span> They are also authorized regional distributors for Nestle, P&G, Suntory, Multipro and 2 Sure.</p>
-                        <p class="experience-date"><span>Date:</span> January 2022</p>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="experience-card experience-card--image-left">
-                <div class="experience-card-grid">
-                    <div class="experience-card-image">
-                        <img src="images/experience-photo.jpg" alt="Abia State House of Assembly training" />
-                    </div>
-                    <div class="experience-meta">
-                        <p><span>Client:</span> Abia State House of Assembly</p>
-                        <p><span>Assignment Name:</span>3 Day Capacity Building Workshop/Retreat for Honourable members
-                             of the Abia State House of Assembly,in commemoration of their one year in office. 
-                        </p>
-                        <p><span>Brief Description:</span>We were commissioned to take sessions on legislative responsibilities 
-                            and constituency expectations. We took the lawmakers on “Bridging the Gap between Effective Representation
-                            and Constituency Expectations" and "Modern Strategies to Achieving Effective Lawmaking, Legislative Advocacy
-                            and Policy Influence".
-                        </p>
-                        <p class="experience-date"><span>Date:</span> June 2024</p>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="experience-card experience-card--image-left">
-                <div class="experience-card-grid">
-                    <div class="experience-card-image">
-                        <img src="images/experience-photo.jpg" alt="50 Savannah Energy Scholars" />
-                    </div>
-                    <div class="experience-meta">
-                        <p><span>Client:</span>Savannah Energy</p>
-                        <p><span>Assignment Name:</span> Leadership and Peak Performance training for 50 Savannah Energy Scholars</p>
-                        <p><span>Brief Description:</span>We were commissioned to train 50 fully funded university students
-                            who are fully funded by Savannah Energy. We equipped the undergraduate students on scholarship with essential leadership skills,
-                            personal branding strategies, and career development tools to enhance their personal and professional growth.
-                        </p>
-                        <p class="experience-date"><span>Date:</span>August 2024</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="experience-card experience-card--image-left">
-                <div class="experience-card-grid">
-                    <div class="experience-card-image">
-                        <img src="images/ie.jpg" alt="IE" />
-                    </div>
-                    <div class="experience-meta">
-                        <p><span>Client:</span>Indepth Earth Geospatal Service Limited</p>
-                        <p><span>Assignment Name:</span>Unlocking Business Potential: A Strategic Growth Plan for
-                            Indepth Earth Geospatal Service Limited.
-                        </p>
-                        <p><span>Brief Description:</span> We were commissioned to train management and staff of the 
-                            company at their year opening retreat optimization of business opportunities, customer service
-                            and peak performance. They are leading global provider of Geospatial artificial intelligence,
-                            pipeline surveillance, underwater mapping, GIS/GPS/CAD/Remote Sensing, Robotics/Autonomous Vehicles and Drone services.
-                        </p>
-                        <p class="experience-date"><span>Date:</span>January 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="experience-card experience-card--image-left">
-                <div class="experience-card-grid">
-                    <div class="experience-card-image">
-                        <img src="images/experience-photo-2.jpg" alt="NDDC" />
-                    </div>
-                    <div class="experience-meta">
-                        <p><span>Client:</span>Niger Delta Development Commission (NDDC)</p>
-                        <p><span>Assignment Name:</span>Utilizing technology and soft skill for overall development.</p>
-                        <p><span>Brief Description:</span>We were commissioned to train management and staff of NDDC, Rivers 
-                            State Office at their retreat on how to utilize Artificial intelligence and other digital tools for improved performance.
-                        </p>
-                        <p class="experience-date"><span>Date:</span>February 2025</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="experience-card experience-card--image-left">
-                <div class="experience-card-grid">
-                      <div class="experience-card-image">
-                        <img src="images/experience-photo.jpg" alt="Savannah Energy" />
-                    </div>
-                    <div class="experience-meta">
-                        <p><span>Client:</span>Savannah Energy</p>
-                        <p><span>Assignment Name:</span>Leadership and Peak Performance training for 100  Savannah Energy Scholars</p>
-                        <p><span>Brief Description:</span> We were commissioned to train 100 Savannah Energy Scholars who are 
-                            university undergraduates on a fully funded scholarship. We Identified, developed, and strengthened
-                            their leadership style and strength towards future readiness. We applied the Eisenhower Matrix to manage
-                            time and increase productivity while balancing academics, leadership roles,and self-care.
-                        </p>
-                        <p class="experience-date"><span>Date:</span>April 2024</p>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="experience-header">
+          <h2 class="section-title">Relevant Experience</h2>
+          <p class="experience-intro">
+            A complete project case study showing client outcomes, training
+            focus, and the proven impact we deliver for brands across
+            hospitality and service sectors.
+          </p>
         </div>
+
+        <div class="experience-card experience-card--image-left">
+          <div class="experience-card-grid">
+            <div class="experience-card-image">
+              <img
+                src="images/experience-photo.jpg"
+                alt="Training session with hotel staff"
+              />
+            </div>
+            <div class="experience-meta">
+              <p><span>Client:</span> Ibom Hotel and Golf Resort</p>
+              <p>
+                <span>Assignment Name:</span> Merits of good work ethics and
+                current management models
+              </p>
+              <p>
+                <span>Brief Description:</span> We were commissioned to train
+                staff of the hotel on excellent customer service and the merits
+                of good work ethics. We X-rayed modern management models and
+                best practices.
+              </p>
+              <p class="experience-date"><span>Date:</span> May 2021</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-card experience-card--image-left">
+          <div class="experience-card-grid">
+            <div class="experience-card-image">
+              <img
+                src="images/experience-photo.jpg"
+                alt="U&K Construction Limited"
+              />
+            </div>
+            <div class="experience-meta">
+              <p><span>Client:</span>U&K Construction Limited</p>
+              <p>
+                <span>Assignment Name:</span>Rudiments of Corporate Branding,
+                Image and Reputation.
+              </p>
+              <p>
+                <span>Brief Description:</span>We were commissioned to train
+                management and staff of U & K Limited, a civil engineering firm
+                on rudiments of Corporate Branding; Image, Identity and
+                Reputation.
+              </p>
+              <p class="experience-date"><span>Date:</span>January 2022</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-card experience-card--image-left">
+          <div class="experience-card-grid">
+            <div class="experience-card-image">
+              <img
+                src="images/experience-photo-2.jpg"
+                alt="Everyday Foods Group training session"
+              />
+            </div>
+            <div class="experience-meta">
+              <p><span>Client:</span> Everyday Foods Group</p>
+              <p>
+                <span>Assignment Name:</span> Annual retreat: Productivity and
+                expansion in a volatile economy
+              </p>
+              <p>
+                <span>Brief Description:</span> We were commissioned to train
+                management and staff of Everyday Foods Group at their annual
+                retreat. Everyday Foods are franchisees of Tantalizers in the
+                region and are opening new outlets in town in the next few
+                weeks.
+              </p>
+              <p>
+                <span>Additional Detail:</span> They are also authorized
+                regional distributors for Nestle, P&G, Suntory, Multipro and 2
+                Sure.
+              </p>
+              <p class="experience-date"><span>Date:</span> January 2022</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-card experience-card--image-left">
+          <div class="experience-card-grid">
+            <div class="experience-card-image">
+              <img
+                src="images/experience-photo.jpg"
+                alt="Abia State House of Assembly training"
+              />
+            </div>
+            <div class="experience-meta">
+              <p><span>Client:</span> Abia State House of Assembly</p>
+              <p>
+                <span>Assignment Name:</span>3 Day Capacity Building
+                Workshop/Retreat for Honourable members of the Abia State House
+                of Assembly,in commemoration of their one year in office.
+              </p>
+              <p>
+                <span>Brief Description:</span>We were commissioned to take
+                sessions on legislative responsibilities and constituency
+                expectations. We took the lawmakers on “Bridging the Gap between
+                Effective Representation and Constituency Expectations" and
+                "Modern Strategies to Achieving Effective Lawmaking, Legislative
+                Advocacy and Policy Influence".
+              </p>
+              <p class="experience-date"><span>Date:</span> June 2024</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-card experience-card--image-left">
+          <div class="experience-card-grid">
+            <div class="experience-card-image">
+              <img
+                src="images/experience-photo.jpg"
+                alt="50 Savannah Energy Scholars"
+              />
+            </div>
+            <div class="experience-meta">
+              <p><span>Client:</span>Savannah Energy</p>
+              <p>
+                <span>Assignment Name:</span> Leadership and Peak Performance
+                training for 50 Savannah Energy Scholars
+              </p>
+              <p>
+                <span>Brief Description:</span>We were commissioned to train 50
+                fully funded university students who are fully funded by
+                Savannah Energy. We equipped the undergraduate students on
+                scholarship with essential leadership skills, personal branding
+                strategies, and career development tools to enhance their
+                personal and professional growth.
+              </p>
+              <p class="experience-date"><span>Date:</span>August 2024</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-card experience-card--image-left">
+          <div class="experience-card-grid">
+            <div class="experience-card-image">
+              <img src="images/ie.jpg" alt="IE" />
+            </div>
+            <div class="experience-meta">
+              <p><span>Client:</span>Indepth Earth Geospatal Service Limited</p>
+              <p>
+                <span>Assignment Name:</span>Unlocking Business Potential: A
+                Strategic Growth Plan for Indepth Earth Geospatal Service
+                Limited.
+              </p>
+              <p>
+                <span>Brief Description:</span> We were commissioned to train
+                management and staff of the company at their year opening
+                retreat optimization of business opportunities, customer service
+                and peak performance. They are leading global provider of
+                Geospatial artificial intelligence, pipeline surveillance,
+                underwater mapping, GIS/GPS/CAD/Remote Sensing,
+                Robotics/Autonomous Vehicles and Drone services.
+              </p>
+              <p class="experience-date"><span>Date:</span>January 2025</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-card experience-card--image-left">
+          <div class="experience-card-grid">
+            <div class="experience-card-image">
+              <img src="images/experience-photo-2.jpg" alt="NDDC" />
+            </div>
+            <div class="experience-meta">
+              <p>
+                <span>Client:</span>Niger Delta Development Commission (NDDC)
+              </p>
+              <p>
+                <span>Assignment Name:</span>Utilizing technology and soft skill
+                for overall development.
+              </p>
+              <p>
+                <span>Brief Description:</span>We were commissioned to train
+                management and staff of NDDC, Rivers State Office at their
+                retreat on how to utilize Artificial intelligence and other
+                digital tools for improved performance.
+              </p>
+              <p class="experience-date"><span>Date:</span>February 2025</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-card experience-card--image-left">
+          <div class="experience-card-grid">
+            <div class="experience-card-image">
+              <img src="images/experience-photo.jpg" alt="Savannah Energy" />
+            </div>
+            <div class="experience-meta">
+              <p><span>Client:</span>Savannah Energy</p>
+              <p>
+                <span>Assignment Name:</span>Leadership and Peak Performance
+                training for 100 Savannah Energy Scholars
+              </p>
+              <p>
+                <span>Brief Description:</span> We were commissioned to train
+                100 Savannah Energy Scholars who are university undergraduates
+                on a fully funded scholarship. We Identified, developed, and
+                strengthened their leadership style and strength towards future
+                readiness. We applied the Eisenhower Matrix to manage time and
+                increase productivity while balancing academics, leadership
+                roles,and self-care.
+              </p>
+              <p class="experience-date"><span>Date:</span>April 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- <section class="testimonials-section">
@@ -729,422 +891,481 @@
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Business?</h2>
-                <p>Schedule a complimentary consultation to discuss your challenges and explore how we can help you achieve your strategic goals.</p>
-                <div class="cta-buttons">
-                    <button class="btn btn-light" onclick="openConsultationModal()">
-                        <i class="fas fa-calendar-check"></i>
-                        Schedule Free Consultation
-                    </button>
-                    <button class="btn btn-outline-light" onclick="scrollToSection('contact')">
-                        <i class="fas fa-phone"></i>
-                        Contact Us Directly
-                    </button>
-                </div>
-            </div>
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Transform Your Business?</h2>
+          <p>
+            Schedule a complimentary consultation to discuss your challenges and
+            explore how we can help you achieve your strategic goals.
+          </p>
+          <div class="cta-buttons">
+            <button class="btn btn-light" onclick="openConsultationModal()">
+              <i class="fas fa-calendar-check"></i>
+              Schedule Free Consultation
+            </button>
+            <button
+              class="btn btn-outline-light"
+              onclick="scrollToSection('contact')"
+            >
+              <i class="fas fa-phone"></i>
+              Contact Us Directly
+            </button>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Contact Us</span>
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle"> 
-                    Ready to start your transformation journey? Contact us today for expert consulting solutions.
-                </p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Our Location</h4>
-                            <p>Naic House, Plot 9. Bank Layout Udo Udoma Avenue Uyo, Akwa Ibom State, Nigeria</p>
-                            <span>Headquarters serving clients nationwide</span>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Phone Number</h4>
-                            <p>+234 803 815 8668</p>
-                            <span>Mon - Fri, 8:00 am - 6:00 pm</span>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email Address</h4>
-                            <p>finbarrconsultslimited@gmail.com</p>
-                            <span>We respond within 24 hours</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form" id="contactForm">
-                    <h3>Send us a Message</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fullName">Full Name *</label>
-                            <input type="text" id="fullName" name="fullName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">Service Interested In</label>
-                        <select id="service" name="service">
-                            <option value="">Select a service</option>
-                            <option value="strategy">Strategic Planning</option>
-                            <option value="analytics">Business Analytics</option>
-                            <option value="process">Process Optimization</option>
-                            <option value="organization">Organizational Development</option>
-                            <option value="digital">Digital Transformation</option>
-                            <option value="risk">Risk Management</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">How can we help you? *</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-block">
-                        <i class="fas fa-paper-plane"></i>
-                        Send Message
-                    </button>
-                </form>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Contact Us</span>
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-subtitle">
+            Ready to start your transformation journey? Contact us today for
+            expert consulting solutions.
+          </p>
         </div>
+
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Our Location</h4>
+                <p>
+                  Naic House, Plot 9. Bank Layout Udo Udoma Avenue Uyo, Akwa
+                  Ibom State, Nigeria
+                </p>
+                <span>Headquarters serving clients nationwide</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Phone Number</h4>
+                <p>+234 803 815 8668</p>
+                <span>Mon - Fri, 8:00 am - 6:00 pm</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email Address</h4>
+                <p>finbarrconsultslimited@gmail.com</p>
+                <span>We respond within 24 hours</span>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <h3>Send us a Message</h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" required />
+              </div>
+              <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Interested In</label>
+              <select id="service" name="service">
+                <option value="">Select a service</option>
+                <option value="strategy">Strategic Planning</option>
+                <option value="analytics">Business Analytics</option>
+                <option value="process">Process Optimization</option>
+                <option value="organization">Organizational Development</option>
+                <option value="digital">Digital Transformation</option>
+                <option value="risk">Risk Management</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">How can we help you? *</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="images/logo.jpg" alt="FINBARR CONSULT LIMITED" class="logo-image" />
-                    </div>
-                    <p>Strategic business consulting for sustainable growth and transformation across Nigeria and international markets.</p>
-                    <div class="footer-social">
-                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="#services">Strategic Planning</a></li>
-                        <li><a href="#services">Business Analytics</a></li>
-                        <li><a href="#services">Process Optimization</a></li>
-                        <li><a href="#services">Organizational Development</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-envelope"></i>finbarrconsultslimited@gmail.com</p>
-                    <p><i class="fas fa-phone"></i> +234 803 815 8668</p>
-                    <p><i class="fas fa-map-marker-alt"></i>Naic House, Plot 9. Bank Layout Udo Udoma Avenue Uyo,
-                        Akwa Ibom State, Nigeria
-                    </p>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="images/logo.jpg"
+                alt="FINBARR CONSULT LIMITED"
+                class="logo-image"
+              />
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 FINBARR CONSULT LIMITED. All rights reserved.</p>
+            <p>
+              Strategic business consulting for sustainable growth and
+              transformation across Nigeria and international markets.
+            </p>
+            <div class="footer-social">
+              <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" title="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
             </div>
+          </div>
+
+          <div class="footer-section">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#services">Strategic Planning</a></li>
+              <li><a href="#services">Business Analytics</a></li>
+              <li><a href="#services">Process Optimization</a></li>
+              <li><a href="#services">Organizational Development</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Contact Info</h4>
+            <p>
+              <i class="fas fa-envelope"></i>finbarrconsultslimited@gmail.com
+            </p>
+            <p><i class="fas fa-phone"></i> +234 803 815 8668</p>
+            <p>
+              <i class="fas fa-map-marker-alt"></i>Naic House, Plot 9. Bank
+              Layout Udo Udoma Avenue Uyo, Akwa Ibom State, Nigeria
+            </p>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 FINBARR CONSULT LIMITED. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <!-- Consultation Modal -->
     <div id="consultationModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('consultationModal')">&times;</span>
-            <h3 class="modal-title">Schedule a Free Consultation</h3>
-            <p>Fill out the form below and we'll contact you within 24 hours to schedule your free consultation.</p>
-            <form id="consultationForm">
-                <div class="form-group">
-                    <label for="consultName">Full Name *</label>
-                    <input type="text" id="consultName" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="consultEmail">Email Address *</label>
-                    <input type="email" id="consultEmail" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="consultCompany">Company</label>
-                    <input type="text" id="consultCompany" name="company">
-                </div>
-                <div class="form-group">
-                    <label for="consultService">Service Interest</label>
-                    <select id="consultService" name="service">
-                        <option value="">Select a service</option>
-                        <option value="strategy">Strategic Planning</option>
-                        <option value="analytics">Business Analytics</option>
-                        <option value="process">Process Optimization</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Schedule Consultation</button>
-            </form>
-        </div>
+      <div class="modal-content">
+        <span class="modal-close" onclick="closeModal('consultationModal')"
+          >&times;</span
+        >
+        <h3 class="modal-title">Schedule a Free Consultation</h3>
+        <p>
+          Fill out the form below and we'll contact you within 24 hours to
+          schedule your free consultation.
+        </p>
+        <form id="consultationForm">
+          <div class="form-group">
+            <label for="consultName">Full Name *</label>
+            <input type="text" id="consultName" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="consultEmail">Email Address *</label>
+            <input type="email" id="consultEmail" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="consultCompany">Company</label>
+            <input type="text" id="consultCompany" name="company" />
+          </div>
+          <div class="form-group">
+            <label for="consultService">Service Interest</label>
+            <select id="consultService" name="service">
+              <option value="">Select a service</option>
+              <option value="strategy">Strategic Planning</option>
+              <option value="analytics">Business Analytics</option>
+              <option value="process">Process Optimization</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Schedule Consultation
+          </button>
+        </form>
+      </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
-        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-        // ===== WEBSITE INITIALIZATION =====
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeWebsite();
+      // ===== WEBSITE INITIALIZATION =====
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeWebsite();
+      });
+
+      function initializeWebsite() {
+        initNavigation();
+        initSmoothScrolling();
+        initScrollEffects();
+        initCounters();
+        initContactForm();
+
+        // Hide loading spinner
+        setTimeout(() => {
+          document.getElementById("loadingSpinner").classList.add("hidden");
+        }, 1000);
+      }
+
+      // ===== NAVIGATION =====
+      function initNavigation() {
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("navMenu");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const header = document.getElementById("header");
+
+        // Mobile menu toggle
+        hamburger.addEventListener("click", function () {
+          this.classList.toggle("active");
+          navMenu.classList.toggle("active");
+
+          if (this.classList.contains("active")) {
+            this.innerHTML = "X";
+          } else {
+            this.innerHTML = "☰";
+          }
         });
 
-        function initializeWebsite() {
-            initNavigation();
-            initSmoothScrolling();
-            initScrollEffects();
-            initCounters();
-            initContactForm();
-            
-            // Hide loading spinner
-            setTimeout(() => {
-                document.getElementById('loadingSpinner').classList.add('hidden');
-            }, 1000);
-        }
+        // Close mobile menu when clicking on links
+        navLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
 
-        // ===== NAVIGATION =====
-        function initNavigation() {
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('navMenu');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const header = document.getElementById('header');
+            // reset icon back to hamburger
+            hamburger.innerHTML = "☰";
+          });
+        });
 
-            // Mobile menu toggle
-            hamburger.addEventListener('click', function() {
-                this.classList.toggle('active');
-                navMenu.classList.toggle('active');
-                
-                if (this.classList.contains('active')) {
-                    this.innerHTML = 'X';
-                } else {
-                    this.innerHTML = '☰';
-                }    
-            });
+        // Header background on scroll
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 100) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+      }
 
-            // Close mobile menu when clicking on links
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
+      // ===== SMOOTH SCROLLING =====
+      function initSmoothScrolling() {
+        const scrollLinks = document.querySelectorAll('a[href^="#"]');
 
-                    // reset icon back to hamburger
-                    hamburger.innerHTML = '☰';
-                });
-            });
+        scrollLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
 
-            // Header background on scroll
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-        }
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
 
-        // ===== SMOOTH SCROLLING =====
-        function initSmoothScrolling() {
-            const scrollLinks = document.querySelectorAll('a[href^="#"]');
-            
-            scrollLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const headerHeight = document.querySelector('.header').offsetHeight;
-                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
-
-        function scrollToSection(sectionId) {
-            const targetElement = document.getElementById(sectionId);
+            const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+              const headerHeight =
+                document.querySelector(".header").offsetHeight;
+              const targetPosition =
+                targetElement.offsetTop - headerHeight - 20;
+
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
             }
-        }
-
-        // ===== SCROLL EFFECTS =====
-        function initScrollEffects() {
-            const animatedElements = document.querySelectorAll('.service-card, .team-member, .process-step, .testimonial-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(element);
-            });
-        }
-
-        // ===== COUNTER ANIMATION =====
-        function initCounters() {
-            const counters = document.querySelectorAll('[data-count]');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            counters.forEach(counter => {
-                observer.observe(counter);
-            });
-        }
-
-        function animateCounter(element) {
-            const target = parseInt(element.getAttribute('data-count'));
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-            
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
-            }, 16);
-        }
-
-        // ===== CONTACT FORM =====
-        function initContactForm() {
-            const contactForm = document.getElementById('contactForm');
-            const consultationForm = document.getElementById('consultationForm');
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    showNotification('Thank you for your message! We will contact you soon.', 'success');
-                    this.reset();
-                });
-            }
-            
-            if (consultationForm) {
-                consultationForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    showNotification('Consultation scheduled! We will contact you to confirm.', 'success');
-                    closeModal('consultationModal');
-                    this.reset();
-                });
-            }
-        }
-
-        // ===== MODALS =====
-        function openConsultationModal() {
-            document.getElementById('consultationModal').classList.add('open');
-        }
-
-        function openServiceModal(serviceType) {
-            showNotification('Service details would open here for: ' + serviceType, 'info');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('open');
-        }
-
-        // Close modals when clicking outside
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                e.target.classList.remove('open');
-            }
+          });
         });
+      }
 
-        // ===== NOTIFICATIONS =====
-        function showNotification(message, type = 'info') {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = `notification-${type}`;
-            notification.innerHTML = `
-                <div style="position:fixed; top:20px; right:20px; background:${type === 'success' ? '#10b981' : '#3b82f6'}; color:white; padding:1rem 1.5rem; border-radius:0.5rem; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1); z-index:10000;">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i> ${message}
+      function scrollToSection(sectionId) {
+        const targetElement = document.getElementById(sectionId);
+        if (targetElement) {
+          const headerHeight = document.querySelector(".header").offsetHeight;
+          const targetPosition = targetElement.offsetTop - headerHeight - 20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      // ===== SCROLL EFFECTS =====
+      function initScrollEffects() {
+        const animatedElements = document.querySelectorAll(
+          ".service-card, .team-member, .process-step, .testimonial-card",
+        );
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+
+        animatedElements.forEach((element) => {
+          element.style.opacity = "0";
+          element.style.transform = "translateY(30px)";
+          element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(element);
+        });
+      }
+
+      // ===== COUNTER ANIMATION =====
+      function initCounters() {
+        const counters = document.querySelectorAll("[data-count]");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 },
+        );
+
+        counters.forEach((counter) => {
+          observer.observe(counter);
+        });
+      }
+
+      function animateCounter(element) {
+        const target = parseInt(element.getAttribute("data-count"));
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          element.textContent =
+            Math.floor(current) +
+            (element.textContent.includes("%") ? "%" : "+");
+        }, 16);
+      }
+
+      // ===== CONTACT FORM =====
+      function initContactForm() {
+        const contactForm = document.getElementById("contactForm");
+        const consultationForm = document.getElementById("consultationForm");
+
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            showNotification(
+              "Thank you for your message! We will contact you soon.",
+              "success",
+            );
+            this.reset();
+          });
+        }
+
+        if (consultationForm) {
+          consultationForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            showNotification(
+              "Consultation scheduled! We will contact you to confirm.",
+              "success",
+            );
+            closeModal("consultationModal");
+            this.reset();
+          });
+        }
+      }
+
+      // ===== MODALS =====
+      function openConsultationModal() {
+        document.getElementById("consultationModal").classList.add("open");
+      }
+
+      function openServiceModal(serviceType) {
+        showNotification(
+          "Service details would open here for: " + serviceType,
+          "info",
+        );
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove("open");
+      }
+
+      // Close modals when clicking outside
+      document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("modal")) {
+          e.target.classList.remove("open");
+        }
+      });
+
+      // ===== NOTIFICATIONS =====
+      function showNotification(message, type = "info") {
+        // Create notification element
+        const notification = document.createElement("div");
+        notification.className = `notification-${type}`;
+        notification.innerHTML = `
+                <div style="position:fixed; top:20px; right:20px; background:${type === "success" ? "#10b981" : "#3b82f6"}; color:white; padding:1rem 1.5rem; border-radius:0.5rem; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1); z-index:10000;">
+                    <i class="fas fa-${type === "success" ? "check-circle" : "info-circle"}"></i> ${message}
                 </div>
             `;
-            
-            document.body.appendChild(notification);
-            
-            // Remove after 5 seconds
-            setTimeout(() => {
-                notification.remove();
-            }, 5000);
-        }
 
-        // ===== UTILITY FUNCTIONS =====
-        function downloadBrochure() {
-            showNotification('Brochure download feature would be implemented here.', 'info');
-        }
+        document.body.appendChild(notification);
 
-        // Progress bar animation
+        // Remove after 5 seconds
         setTimeout(() => {
-            document.querySelector('.progress-fill').style.width = '85%';
-        }, 500);
+          notification.remove();
+        }, 5000);
+      }
+
+      // ===== UTILITY FUNCTIONS =====
+      function downloadBrochure() {
+        showNotification(
+          "Brochure download feature would be implemented here.",
+          "info",
+        );
+      }
+
+      // Progress bar animation
+      setTimeout(() => {
+        document.querySelector(".progress-fill").style.width = "85%";
+      }, 500);
     </script>
-</body>
+  </body>
 </html>

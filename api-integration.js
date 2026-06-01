@@ -44,41 +44,23 @@ async function submitContactForm(formData) {
 // ===== CONSULTATION BOOKING =====
 async function submitConsultationForm(formData) {
   try {
-    const { data, error } = await supabaseClient
-      .from("contact_messages")
-      .insert([
-        {
-          fullName,
-          email,
-          company,
-          phone,
-          service,
-          message,
-        },
-      ]);
+    const { error } = await supabaseClient
+      .from("consultations")
+      .insert([formData]);
 
     if (error) {
       console.error(error);
-      showNotification("Error submitting form", "error");
-    } else {
-      showNotification("Message sent successfully!", "success");
-      document.getElementById("contactForm").reset();
-    }
-
-    const data = await response.json();
-
-    if (data.success) {
-      showNotification('Consultation scheduled! We will contact you to confirm.', 'success');
-      closeModal('consultationModal');
-      document.getElementById('consultationForm').reset();
-      return true;
-    } else {
-      showNotification(data.message || 'Error scheduling consultation. Please try again.', 'error');
+      showNotification("Error submitting consultation", "error");
       return false;
     }
+
+    showNotification("Consultation booked successfully!", "success");
+    document.getElementById("consultationForm").reset();
+    return true;
+
   } catch (error) {
-    console.error('Error:', error);
-    showNotification('Error scheduling consultation. Please try again later.', 'error');
+    console.error(error);
+    showNotification("Something went wrong", "error");
     return false;
   }
 }
