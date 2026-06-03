@@ -1,11 +1,9 @@
 // ===== API CONFIGURATION =====
 const supabaseUrl = "https://zbmuvcegrtdhlwthhtaa.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpibXV2Y2VncnRkaGx3dGhodGFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDM3MDEsImV4cCI6MjA5NTU3OTcwMX0.US3YMlrdgPh2e0Z-vY2jq8pSoOZiiIvYTW9XgVhh2R4";
+const supabaseKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpibXV2Y2VncnRkaGx3dGhodGFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDM3MDEsImV4cCI6MjA5NTU3OTcwMX0.US3YMlrdgPh2e0Z-vY2jq8pSoOZiiIvYTW9XgVhh2R4";
 
-const supabaseClient = supabase.createClient(
-  supabaseUrl,
-  supabaseKey
-);
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 // ===== CONTACT FORM SUBMISSION =====
 async function submitContactForm(formData) {
@@ -20,26 +18,19 @@ async function submitContactForm(formData) {
       return false;
     }
 
-    showNotification("Message sent successfully!", "success");
-    return true;
+    showNotification(
+      "Thank you for your message! We will contact you soon.",
+      "success",
+    );
 
+    document.getElementById("contactForm").reset();
+    return true;
   } catch (error) {
     console.error(error);
-    showNotification("submitting went wrong", "error");
+    showNotification("Something went wrong. Please try again.", "error");
     return false;
   }
-
-    const data = await response.json();
-
-    if (data.success) {
-      showNotification('Thank you for your message! We will contact you soon.', 'success');
-      document.getElementById('contactForm').reset();
-      return true;
-    } else {
-      showNotification(data.message || 'Error submitting form. Please try again.', 'error');
-      return false;
-    }
-  
+}
 
 // ===== CONSULTATION BOOKING =====
 async function submitConsultationForm(formData) {
@@ -50,17 +41,17 @@ async function submitConsultationForm(formData) {
 
     if (error) {
       console.error(error);
-      showNotification("Error submitting consultation", "error");
+      showNotification("Error submitting consultation request", "error");
       return false;
     }
 
     showNotification("Consultation booked successfully!", "success");
+
     document.getElementById("consultationForm").reset();
     return true;
-
   } catch (error) {
     console.error(error);
-    showNotification("Something went wrong", "error");
+    showNotification("Something went wrong. Please try again.", "error");
     return false;
   }
 }
@@ -69,9 +60,9 @@ async function submitConsultationForm(formData) {
 async function adminLogin(username, password) {
   try {
     const response = await fetch(`${API_BASE_URL}/auth/login`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
     });
@@ -80,27 +71,27 @@ async function adminLogin(username, password) {
 
     if (data.success) {
       // Store token in localStorage
-      localStorage.setItem('adminToken', data.token);
-      localStorage.setItem('adminUser', JSON.stringify(data.admin));
+      localStorage.setItem("adminToken", data.token);
+      localStorage.setItem("adminUser", JSON.stringify(data.admin));
       return data.token;
     } else {
-      throw new Error(data.message || 'Login failed');
+      throw new Error(data.message || "Login failed");
     }
   } catch (error) {
-    console.error('Login error:', error);
+    console.error("Login error:", error);
     throw error;
   }
 }
 
 // ===== GET AUTHORIZATION HEADER =====
 function getAuthHeader() {
-  const token = localStorage.getItem('adminToken');
+  const token = localStorage.getItem("adminToken");
   if (!token) {
-    throw new Error('Not authenticated');
+    throw new Error("Not authenticated");
   }
   return {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`,
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
   };
 }
 
@@ -111,7 +102,7 @@ async function fetchContacts(page = 1, limit = 10) {
       `${API_BASE_URL}/contact?page=${page}&limit=${limit}`,
       {
         headers: getAuthHeader(),
-      }
+      },
     );
 
     const data = await response.json();
@@ -122,7 +113,7 @@ async function fetchContacts(page = 1, limit = 10) {
       throw new Error(data.message);
     }
   } catch (error) {
-    console.error('Error fetching contacts:', error);
+    console.error("Error fetching contacts:", error);
     throw error;
   }
 }
@@ -142,7 +133,7 @@ async function fetchContactStats() {
       throw new Error(data.message);
     }
   } catch (error) {
-    console.error('Error fetching stats:', error);
+    console.error("Error fetching stats:", error);
     throw error;
   }
 }
@@ -154,7 +145,7 @@ async function fetchConsultations(page = 1, limit = 10) {
       `${API_BASE_URL}/consultation?page=${page}&limit=${limit}`,
       {
         headers: getAuthHeader(),
-      }
+      },
     );
 
     const data = await response.json();
@@ -165,7 +156,7 @@ async function fetchConsultations(page = 1, limit = 10) {
       throw new Error(data.message);
     }
   } catch (error) {
-    console.error('Error fetching consultations:', error);
+    console.error("Error fetching consultations:", error);
     throw error;
   }
 }
@@ -185,7 +176,7 @@ async function fetchConsultationStats() {
       throw new Error(data.message);
     }
   } catch (error) {
-    console.error('Error fetching stats:', error);
+    console.error("Error fetching stats:", error);
     throw error;
   }
 }
@@ -194,7 +185,7 @@ async function fetchConsultationStats() {
 async function updateContact(id, updates) {
   try {
     const response = await fetch(`${API_BASE_URL}/contact/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: getAuthHeader(),
       body: JSON.stringify(updates),
     });
@@ -202,14 +193,14 @@ async function updateContact(id, updates) {
     const data = await response.json();
 
     if (data.success) {
-      showNotification('Contact updated successfully', 'success');
+      showNotification("Contact updated successfully", "success");
       return data.contact;
     } else {
       throw new Error(data.message);
     }
   } catch (error) {
-    console.error('Error updating contact:', error);
-    showNotification('Error updating contact', 'error');
+    console.error("Error updating contact:", error);
+    showNotification("Error updating contact", "error");
     throw error;
   }
 }
@@ -218,21 +209,21 @@ async function updateContact(id, updates) {
 async function deleteContact(id) {
   try {
     const response = await fetch(`${API_BASE_URL}/contact/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: getAuthHeader(),
     });
 
     const data = await response.json();
 
     if (data.success) {
-      showNotification('Contact deleted successfully', 'success');
+      showNotification("Contact deleted successfully", "success");
       return true;
     } else {
       throw new Error(data.message);
     }
   } catch (error) {
-    console.error('Error deleting contact:', error);
-    showNotification('Error deleting contact', 'error');
+    console.error("Error deleting contact:", error);
+    showNotification("Error deleting contact", "error");
     throw error;
   }
 }
@@ -241,20 +232,20 @@ async function deleteContact(id) {
 // Update the initContactForm function in your main HTML to use the API
 
 function initContactFormWithAPI() {
-  const contactForm = document.getElementById('contactForm');
-  const consultationForm = document.getElementById('consultationForm');
+  const contactForm = document.getElementById("contactForm");
+  const consultationForm = document.getElementById("consultationForm");
 
   if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
+    contactForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const formData = {
-        fullName: document.getElementById('fullName').value,
-        email: document.getElementById('email').value,
-        company: document.getElementById('company').value,
-        phone: document.getElementById('phone').value,
-        service: document.getElementById('service').value,
-        message: document.getElementById('message').value,
+        fullName: document.getElementById("fullName").value,
+        email: document.getElementById("email").value,
+        company: document.getElementById("company").value,
+        phone: document.getElementById("phone").value,
+        service: document.getElementById("service").value,
+        message: document.getElementById("message").value,
       };
 
       await submitContactForm(formData);
@@ -262,14 +253,14 @@ function initContactFormWithAPI() {
   }
 
   if (consultationForm) {
-    consultationForm.addEventListener('submit', async function(e) {
+    consultationForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const formData = {
-        name: document.getElementById('consultName').value,
-        email: document.getElementById('consultEmail').value,
-        company: document.getElementById('consultCompany').value,
-        service: document.getElementById('consultService').value,
+        name: document.getElementById("consultName").value,
+        email: document.getElementById("consultEmail").value,
+        company: document.getElementById("consultCompany").value,
+        service: document.getElementById("consultService").value,
       };
 
       await submitConsultationForm(formData);

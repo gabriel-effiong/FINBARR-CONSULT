@@ -447,37 +447,11 @@
     </div>
 
     <script>
-      const supabaseUrl = '"https://zbmuvcegrtdhlwthhtaa.supabase.co"';
+      const supabaseUrl = "https://zbmuvcegrtdhlwthhtaa.supabase.co";
       const supabaseKey =
-        '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpibXV2Y2VncnRkaGx3dGhodGFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDM3MDEsImV4cCI6MjA5NTU3OTcwMX0.US3YMlrdgPh2e0Z-vY2jq8pSoOZiiIvYTW9XgVhh2R4"';
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpibXV2Y2VncnRkaGx3dGhodGFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDM3MDEsImV4cCI6MjA5NTU3OTcwMX0.US3YMlrdgPh2e0Z-vY2jq8pSoOZiiIvYTW9XgVhh2R4";
 
       const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-
-          const username = document.getElementById("username").value;
-          const password = document.getElementById("password").value;
-          const errorDiv = document.getElementById("loginError");
-
-          const { data, error } = await supabaseClient.auth.signInWithPassword({
-            email: username,
-            password: password,
-          });
-
-          if (error) {
-            errorDiv.textContent = error.message;
-          } else {
-            localStorage.setItem("adminLoggedIn", "true");
-
-            document.getElementById("loginSection").style.display = "none";
-            document.getElementById("dashboard").style.display = "block";
-
-            showNotification("Login successful", "success");
-          }
-        });
 
       // ===== AUTHENTICATION =====
       document
@@ -487,28 +461,21 @@
 
           const username = document.getElementById("username").value;
           const password = document.getElementById("password").value;
-          const errorDiv = document.getElementById("loginError");
 
-          try {
-            const response = await fetch(`${API_BASE_URL}/auth/login`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ username, password }),
-            });
+          const { data, error } = await supabaseClient.auth.signInWithPassword({
+            email: username,
+            password: password,
+          });
 
-            const data = await response.json();
-
-            if (data.success) {
-              localStorage.setItem("adminToken", data.token);
-              document.getElementById("loginSection").style.display = "none";
-              document.getElementById("dashboard").style.display = "block";
-              loadDashboardData();
-            } else {
-              errorDiv.textContent = data.message || "Login failed";
-            }
-          } catch (error) {
-            errorDiv.textContent = "Error connecting to server";
+          if (error) {
+            document.getElementById("loginError").textContent = error.message;
+            return;
           }
+
+          document.getElementById("loginSection").style.display = "none";
+          document.getElementById("dashboard").style.display = "block";
+
+          loadDashboardData();
         });
 
       function logout() {
@@ -574,90 +541,33 @@
       }
 
       // ===== LOAD CONTACTS =====
-      async function loadContacts() {
-        try {
-          const response = await fetch(`${API_BASE_URL}/contact`, {
-            headers: getAuthHeader(),
-          });
-          const data = await response.json();
+      async function loadConsultations() {
+        const { data, error } = await supabaseClient
+          .from("consultations")
+          .select("*")
+          .order("created_at", { ascending: false });
 
-          let html = "";
-
-          if (data.success && data.contacts.length > 0) {
-            html = '<div class="table-container"><table><thead><tr>';
-            html +=
-              "<th>Name</th><th>Email</th><th>Company</th><th>Service</th><th>Status</th><th>Actions</th>";
-            html += "</tr></thead><tbody>";
-
-            data.contacts.forEach((contact) => {
-              html += `
-                            <tr>
-                                <td>${contact.fullName}</td>
-                                <td>${contact.email}</td>
-                                <td>${contact.company || "N/A"}</td>
-                                <td>${contact.service || "N/A"}</td>
-                                <td><span class="status-badge status-${contact.status}">${contact.status}</span></td>
-                                <td>
-                                    <button class="action-btn" onclick="viewContact('${contact._id}')">View</button>
-                                    <button class="action-btn delete" onclick="deleteContactRecord('${contact._id}')">Delete</button>
-                                </td>
-                            </tr>
-                        `;
-            });
-
-            html += "</tbody></table></div>";
-          } else {
-            html = "<p>No contacts found.</p>";
-          }
-
-          document.getElementById("contactsContainer").innerHTML = html;
-        } catch (error) {
-          document.getElementById("contactsContainer").innerHTML =
-            "<p>Error loading contacts</p>";
+        if (error) {
+          console.error(error);
+          return;
         }
+
+        console.log(data);
       }
 
       // ===== LOAD CONSULTATIONS =====
       async function loadConsultations() {
-        try {
-          const response = await fetch(`${API_BASE_URL}/consultation`, {
-            headers: getAuthHeader(),
-          });
-          const data = await response.json();
+        const { data, error } = await supabaseClient
+          .from("consultations")
+          .select("*")
+          .order("created_at", { ascending: false });
 
-          let html = "";
-
-          if (data.success && data.consultations.length > 0) {
-            html = '<div class="table-container"><table><thead><tr>';
-            html +=
-              "<th>Name</th><th>Email</th><th>Company</th><th>Service</th><th>Status</th><th>Actions</th>";
-            html += "</tr></thead><tbody>";
-
-            data.consultations.forEach((consultation) => {
-              html += `
-                            <tr>
-                                <td>${consultation.name}</td>
-                                <td>${consultation.email}</td>
-                                <td>${consultation.company || "N/A"}</td>
-                                <td>${consultation.service || "N/A"}</td>
-                                <td><span class="status-badge status-${consultation.status}">${consultation.status}</span></td>
-                                <td>
-                                    <button class="action-btn" onclick="viewConsultation('${consultation._id}')">View</button>
-                                </td>
-                            </tr>
-                        `;
-            });
-
-            html += "</tbody></table></div>";
-          } else {
-            html = "<p>No consultations found.</p>";
-          }
-
-          document.getElementById("consultationsContainer").innerHTML = html;
-        } catch (error) {
-          document.getElementById("consultationsContainer").innerHTML =
-            "<p>Error loading consultations</p>";
+        if (error) {
+          console.error(error);
+          return;
         }
+
+        console.log(data);
       }
 
       // ===== VIEW CONTACT DETAILS =====

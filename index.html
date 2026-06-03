@@ -1285,27 +1285,66 @@
 
       // ===== CONTACT FORM =====
       function initContactForm() {
+        const supabaseUrl = "https://zbmuvcegrtdhlwthhtaa.supabase.co";
+        const supabaseKey = "YOUR_ANON_KEY";
+
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
         const contactForm = document.getElementById("contactForm");
         const consultationForm = document.getElementById("consultationForm");
 
         if (contactForm) {
-          contactForm.addEventListener("submit", function (e) {
+          contactForm.addEventListener("submit", async function (e) {
             e.preventDefault();
-            showNotification(
-              "Thank you for your message! We will contact you soon.",
-              "success",
-            );
+
+            const formData = {
+              full_name: document.getElementById("fullName").value,
+              company: document.getElementById("company").value,
+              email: document.getElementById("email").value,
+              phone: document.getElementById("phone").value,
+              service: document.getElementById("service").value,
+              message: document.getElementById("message").value,
+            };
+
+            const { error } = await supabaseClient
+              .from("contact_messages")
+              .insert([formData]);
+
+            if (error) {
+              console.error(error);
+              showNotification("Failed to send message.", "error");
+              return;
+            }
+
+            showNotification("Message sent successfully!", "success");
+
             this.reset();
           });
         }
 
         if (consultationForm) {
-          consultationForm.addEventListener("submit", function (e) {
+          consultationForm.addEventListener("submit", async function (e) {
             e.preventDefault();
-            showNotification(
-              "Consultation scheduled! We will contact you to confirm.",
-              "success",
-            );
+
+            const formData = {
+              name: document.getElementById("consultName").value,
+              email: document.getElementById("consultEmail").value,
+              company: document.getElementById("consultCompany").value,
+              service: document.getElementById("consultService").value,
+            };
+
+            const { error } = await supabaseClient
+              .from("consultations")
+              .insert([formData]);
+
+            if (error) {
+              console.error(error);
+              showNotification("Failed to schedule consultation.", "error");
+              return;
+            }
+
+            showNotification("Consultation scheduled successfully!", "success");
+
             closeModal("consultationModal");
             this.reset();
           });
