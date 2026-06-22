@@ -1170,11 +1170,13 @@ p {
 
 /* ===== CONTACT SECTION ===== */
 .contact {
+  border: 1px solid #000;
   padding: var(--space-2xl) 0;
   background: var(--lighter-gray);
 }
 
 .contact-content {
+  border: 10px solid #000;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-2xl);
