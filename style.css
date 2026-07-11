@@ -1620,6 +1620,7 @@ p {
     padding: var(--space-lg);
     border: none;
     box-shadow: none;
+    background: transparent;
   }
 
   .form-group input,
