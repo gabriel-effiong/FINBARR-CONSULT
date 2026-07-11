@@ -1117,8 +1117,6 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <script>
       // ===== WEBSITE INITIALIZATION =====
       document.addEventListener("DOMContentLoaded", function () {
@@ -1162,8 +1160,6 @@
           link.addEventListener("click", () => {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
-
-            // reset icon back to hamburger
             hamburger.innerHTML = "☰";
           });
         });
@@ -1266,7 +1262,7 @@
       }
 
       function animateCounter(element) {
-        const target = parseInt(element.getAttribute("data-count"));
+        const target = parseInt(element.getAttribute("data-count"), 10);
         const duration = 2000;
         const step = target / (duration / 16);
         let current = 0;
@@ -1285,20 +1281,43 @@
 
       // ===== CONTACT FORM =====
       function initContactForm() {
-        const supabaseUrl = "https://zbmuvcegrtdhlwthhtaa.supabase.co";
-        const supabaseKey = "YOUR_ANON_KEY";
-
-        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-
         const contactForm = document.getElementById("contactForm");
         const consultationForm = document.getElementById("consultationForm");
+
+        async function postForm(
+          endpoint,
+          payload,
+          successMessage,
+          errorMessage,
+        ) {
+          try {
+            const response = await fetch(endpoint, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
+            });
+
+            const result = await response.json();
+            if (!response.ok || !result.success) {
+              throw new Error(result.message || errorMessage);
+            }
+
+            return true;
+          } catch (error) {
+            console.error(error);
+            showNotification(error.message || errorMessage, "error");
+            return false;
+          }
+        }
 
         if (contactForm) {
           contactForm.addEventListener("submit", async function (e) {
             e.preventDefault();
 
             const formData = {
-              full_name: document.getElementById("fullName").value,
+              fullName: document.getElementById("fullName").value,
               company: document.getElementById("company").value,
               email: document.getElementById("email").value,
               phone: document.getElementById("phone").value,
@@ -1306,19 +1325,17 @@
               message: document.getElementById("message").value,
             };
 
-            const { error } = await supabaseClient
-              .from("contact_messages")
-              .insert([formData]);
+            const success = await postForm(
+              "/api/contact",
+              formData,
+              "Message sent successfully!",
+              "Failed to send message.",
+            );
 
-            if (error) {
-              console.error(error);
-              showNotification("Failed to send message.", "error");
-              return;
+            if (success) {
+              showNotification("Message sent successfully!", "success");
+              this.reset();
             }
-
-            showNotification("Message sent successfully!", "success");
-
-            this.reset();
           });
         }
 
@@ -1333,20 +1350,21 @@
               service: document.getElementById("consultService").value,
             };
 
-            const { error } = await supabaseClient
-              .from("consultations")
-              .insert([formData]);
+            const success = await postForm(
+              "/api/consultation",
+              formData,
+              "Consultation booked successfully!",
+              "Failed to schedule consultation.",
+            );
 
-            if (error) {
-              console.error(error);
-              showNotification("Failed to schedule consultation.", "error");
-              return;
+            if (success) {
+              showNotification(
+                "Consultation scheduled successfully!",
+                "success",
+              );
+              closeModal("consultationModal");
+              this.reset();
             }
-
-            showNotification("Consultation scheduled successfully!", "success");
-
-            closeModal("consultationModal");
-            this.reset();
           });
         }
       }

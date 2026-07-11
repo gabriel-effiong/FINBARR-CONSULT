@@ -1170,17 +1170,19 @@ p {
 
 /* ===== CONTACT SECTION ===== */
 .contact {
-  border: 1px solid #000;
   padding: var(--space-2xl) 0;
   background: var(--lighter-gray);
 }
 
 .contact-content {
-  border: 10px solid #000;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-2xl);
   align-items: start;
+}
+
+.contact-content > * {
+  min-width: 0;
 }
 
 .contact-info {
@@ -1188,6 +1190,18 @@ p {
   padding: var(--space-xl);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
+}
+
+.contact-form {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-form h3 {
+  margin-bottom: var(--space-lg);
+  color: var(--dark-blue);
 }
 
 .contact-item {
@@ -1422,7 +1436,7 @@ p {
   }
 
   .contact-content {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .team-grid {
@@ -1604,6 +1618,19 @@ p {
   .contact-info,
   .contact-form {
     padding: var(--space-lg);
+    border: none;
+    box-shadow: none;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    border: none;
+    border-bottom: 1px solid var(--light-gray);
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    background: transparent;
   }
 
   .footer-content {
