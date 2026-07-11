@@ -1209,6 +1209,13 @@ p {
   align-items: flex-start;
   gap: var(--space-md);
   margin-bottom: var(--space-xl);
+  min-width: 0;
+}
+
+.contact-item .contact-details {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact-icon {
@@ -1621,6 +1628,18 @@ p {
     border: none;
     box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
     background: var(--white);
+  }
+
+  .contact-item {
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    align-items: center;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
   }
 
   .form-group input,
