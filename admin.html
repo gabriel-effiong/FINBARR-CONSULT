@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finbarr Consult Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+      :root {
+        --primary: #0f172a;
+        --primary-soft: #1d4ed8;
+        --light: #f8fafc;
+        --panel: #ffffff;
+        --muted: #64748b;
+        --border: #e2e8f0;
+        --success: #16a34a;
+        --warning: #f59e0b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #eff6ff, #f8fafc);
+        color: var(--primary);
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .auth-shell {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .auth-card {
+        width: min(420px, 100%);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+        padding: 32px;
+      }
+
+      .auth-card h1 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+      }
+
+      .auth-card p {
+        margin: 0 0 24px;
+        color: var(--muted);
+      }
+
+      .field {
+        margin-bottom: 18px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+
+      button {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--primary-soft), #2563eb);
+        color: white;
+        padding: 12px 18px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .error {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #b91c1c;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        display: none;
+      }
+
+      .topbar {
+        background: var(--primary);
+        color: white;
+        padding: 20px 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .topbar h2 {
+        margin: 0;
+      }
+
+      .logout-btn {
+        width: auto;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px 20px 60px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 18px;
+        margin-bottom: 28px;
+      }
+
+      .stat-card {
+        background: white;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        padding: 20px;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.03);
+      }
+
+      .stat-card .label {
+        color: var(--muted);
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .stat-card .value {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .panel {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 24px;
+        overflow: hidden;
+      }
+
+      .panel h3 {
+        margin-top: 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.96rem;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 12px 10px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+
+      th {
+        background: #f8fafc;
+        color: var(--muted);
+      }
+
+      .badge {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 5px 10px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        background: #dbeafe;
+        color: #1d4ed8;
+      }
+
+      .empty {
+        color: var(--muted);
+        padding: 20px 0;
+      }
+
+      @media (max-width: 640px) {
+        .auth-card {
+          padding: 22px;
+        }
+        .topbar {
+          padding: 16px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loginView" class="auth-shell">
+      <div class="auth-card">
+        <h1>Finbarr Consult</h1>
+        <p>Admin dashboard</p>
+
+        <div id="loginError" class="error">Invalid username or password.</div>
+
+        <form id="loginForm">
+          <div class="field">
+            <label for="username">Username</label>
+            <input id="username" type="text" value="admin" required />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" type="password" value="admin123" required />
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="dashboardView" class="hidden">
+      <header class="topbar">
+        <h2>Finbarr Admin Dashboard</h2>
+        <button id="logoutBtn" class="logout-btn" type="button">Logout</button>
+      </header>
+
+      <div class="container">
+        <div class="stats">
+          <div class="stat-card">
+            <span class="label">Total Contact Messages</span>
+            <span id="contactCount" class="value">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="label">Total Consultations</span>
+            <span id="consultationCount" class="value">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="label">Latest Submission</span>
+            <span id="latestDate" class="value">--</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Recent Contact Messages</h3>
+          <div id="contactTableContainer"></div>
+        </div>
+
+        <div class="panel">
+          <h3>Consultation Requests</h3>
+          <div id="consultationTableContainer"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const supabaseUrl = "https://zbmuvcegrtdhlwthhtaa.supabase.co";
+      const supabaseKey =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpibXV2Y2VncnRkaGx3dGhodGFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDM3MDEsImV4cCI6MjA5NTU3OTcwMX0.US3YMlrdgPh2e0Z-vY2jq8pSoOZiiIvYTW9XgVhh2R4";
+      const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+      const loginView = document.getElementById("loginView");
+      const dashboardView = document.getElementById("dashboardView");
+      const loginForm = document.getElementById("loginForm");
+      const loginError = document.getElementById("loginError");
+      const logoutBtn = document.getElementById("logoutBtn");
+      const contactTableContainer = document.getElementById(
+        "contactTableContainer",
+      );
+      const consultationTableContainer = document.getElementById(
+        "consultationTableContainer",
+      );
+      const contactCount = document.getElementById("contactCount");
+      const consultationCount = document.getElementById("consultationCount");
+      const latestDate = document.getElementById("latestDate");
+
+      function isLoggedIn() {
+        return localStorage.getItem("finbarr-admin") === "true";
+      }
+
+      function showDashboard() {
+        loginView.classList.add("hidden");
+        dashboardView.classList.remove("hidden");
+      }
+
+      function showLogin() {
+        dashboardView.classList.add("hidden");
+        loginView.classList.remove("hidden");
+      }
+
+      function renderTable(container, rows, columns) {
+        if (!rows || rows.length === 0) {
+          container.innerHTML = '<div class="empty">No records found.</div>';
+          return;
+        }
+
+        const table = document.createElement("table");
+        const thead = document.createElement("thead");
+        const tbody = document.createElement("tbody");
+
+        const headRow = document.createElement("tr");
+        columns.forEach((col) => {
+          const th = document.createElement("th");
+          th.textContent = col.label;
+          headRow.appendChild(th);
+        });
+        thead.appendChild(headRow);
+        table.appendChild(thead);
+
+        rows.forEach((row) => {
+          const tr = document.createElement("tr");
+          columns.forEach((col) => {
+            const td = document.createElement("td");
+            let value = row[col.key];
+            if (value === null || value === undefined || value === "")
+              value = "-";
+            if (col.format) value = col.format(value, row);
+            td.textContent = value;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+
+        table.appendChild(tbody);
+        container.innerHTML = "";
+        container.appendChild(table);
+      }
+
+      async function loadData() {
+        try {
+          const [contactResult, consultationResult] = await Promise.all([
+            supabase
+              .from("contact_messages")
+              .select("*")
+              .order("created_at", { ascending: false }),
+            supabase
+              .from("consultations")
+              .select("*")
+              .order("created_at", { ascending: false }),
+          ]);
+
+          if (contactResult.error) throw contactResult.error;
+          if (consultationResult.error) throw consultationResult.error;
+
+          const contacts = contactResult.data || [];
+          const consultations = consultationResult.data || [];
+
+          contactCount.textContent = String(contacts.length);
+          consultationCount.textContent = String(consultations.length);
+
+          const newest = [...contacts, ...consultations]
+            .filter((item) => item.created_at)
+            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))[0];
+
+          if (newest && newest.created_at) {
+            latestDate.textContent = new Date(
+              newest.created_at,
+            ).toLocaleDateString();
+          } else {
+            latestDate.textContent = "--";
+          }
+
+          renderTable(contactTableContainer, contacts, [
+            { key: "full_name", label: "Name" },
+            { key: "email", label: "Email" },
+            { key: "company", label: "Company" },
+            { key: "service", label: "Service" },
+            {
+              key: "created_at",
+              label: "Date",
+              format: (value) => new Date(value).toLocaleString(),
+            },
+          ]);
+
+          renderTable(consultationTableContainer, consultations, [
+            { key: "name", label: "Name" },
+            { key: "email", label: "Email" },
+            { key: "company", label: "Company" },
+            { key: "service", label: "Service" },
+            {
+              key: "created_at",
+              label: "Date",
+              format: (value) => new Date(value).toLocaleString(),
+            },
+          ]);
+        } catch (error) {
+          contactTableContainer.innerHTML =
+            '<div class="empty">Unable to load submissions. Check the Supabase tables and RLS settings.</div>';
+          consultationTableContainer.innerHTML =
+            '<div class="empty">Unable to load submissions. Check the Supabase tables and RLS settings.</div>';
+          console.error(error);
+        }
+      }
+
+      loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (username === "admin" && password === "admin123") {
+          localStorage.setItem("finbarr-admin", "true");
+          loginError.style.display = "none";
+          showDashboard();
+          loadData();
+        } else {
+          loginError.style.display = "block";
+        }
+      });
+
+      logoutBtn.addEventListener("click", function () {
+        localStorage.removeItem("finbarr-admin");
+        showLogin();
+      });
+
+      if (isLoggedIn()) {
+        showDashboard();
+        loadData();
+      } else {
+        showLogin();
+      }
+    </script>
+  </body>
+</html>
