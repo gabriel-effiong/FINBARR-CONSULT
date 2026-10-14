@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finbarr Consult Admin</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
       :root {
         --primary: #0f172a;
@@ -216,12 +215,12 @@
         <form id="loginForm">
           <div class="field">
             <label for="username">Username</label>
-            <input id="username" type="text" value="admin" required />
+            <input id="username" type="text" autocomplete="username" required />
           </div>
 
           <div class="field">
             <label for="password">Password</label>
-            <input id="password" type="password" value="admin123" required />
+            <input id="password" type="password" autocomplete="current-password" required />
           </div>
 
           <button type="submit">Login</button>
@@ -264,28 +263,20 @@
     </div>
 
     <script>
-      const supabaseUrl = "https://zbmuvcegrtdhlwthhtaa.supabase.co";
-      const supabaseKey =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpibXV2Y2VncnRkaGx3dGhodGFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDM3MDEsImV4cCI6MjA5NTU3OTcwMX0.US3YMlrdgPh2e0Z-vY2jq8pSoOZiiIvYTW9XgVhh2R4";
-      const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
+      const apiBaseUrl = (window.FINBARR_API_BASE_URL || "").replace(/\/$/, "");
       const loginView = document.getElementById("loginView");
       const dashboardView = document.getElementById("dashboardView");
       const loginForm = document.getElementById("loginForm");
       const loginError = document.getElementById("loginError");
       const logoutBtn = document.getElementById("logoutBtn");
-      const contactTableContainer = document.getElementById(
-        "contactTableContainer",
-      );
-      const consultationTableContainer = document.getElementById(
-        "consultationTableContainer",
-      );
+      const contactTableContainer = document.getElementById("contactTableContainer");
+      const consultationTableContainer = document.getElementById("consultationTableContainer");
       const contactCount = document.getElementById("contactCount");
       const consultationCount = document.getElementById("consultationCount");
       const latestDate = document.getElementById("latestDate");
 
-      function isLoggedIn() {
-        return localStorage.getItem("finbarr-admin") === "true";
+      function getToken() {
+        return sessionStorage.getItem("finbarr-admin-token");
       }
 
       function showDashboard() {
@@ -298,6 +289,20 @@
         loginView.classList.remove("hidden");
       }
 
+      async function apiRequest(path, options = {}) {
+        const headers = { "Content-Type": "application/json", ...(options.headers || {}) };
+        const token = getToken();
+        if (token) headers.Authorization = `Bearer ${token}`;
+
+        const response = await fetch(`${apiBaseUrl}${path}`, { ...options, headers });
+        const data = await response.json();
+        if (!response.ok || !data.success) {
+          if (response.status === 401) sessionStorage.removeItem("finbarr-admin-token");
+          throw new Error(data.message || "The request failed.");
+        }
+        return data;
+      }
+
       function renderTable(container, rows, columns) {
         if (!rows || rows.length === 0) {
           container.innerHTML = '<div class="empty">No records found.</div>';
@@ -307,8 +312,8 @@
         const table = document.createElement("table");
         const thead = document.createElement("thead");
         const tbody = document.createElement("tbody");
-
         const headRow = document.createElement("tr");
+
         columns.forEach((col) => {
           const th = document.createElement("th");
           th.textContent = col.label;
@@ -322,8 +327,7 @@
           columns.forEach((col) => {
             const td = document.createElement("td");
             let value = row[col.key];
-            if (value === null || value === undefined || value === "")
-              value = "-";
+            if (value === null || value === undefined || value === "") value = "-";
             if (col.format) value = col.format(value, row);
             td.textContent = value;
             tr.appendChild(td);
@@ -332,98 +336,81 @@
         });
 
         table.appendChild(tbody);
-        container.innerHTML = "";
-        container.appendChild(table);
+        container.replaceChildren(table);
       }
 
       async function loadData() {
         try {
           const [contactResult, consultationResult] = await Promise.all([
-            supabase
-              .from("contact_messages")
-              .select("*")
-              .order("created_at", { ascending: false }),
-            supabase
-              .from("consultations")
-              .select("*")
-              .order("created_at", { ascending: false }),
+            apiRequest("/api/contact?limit=100"),
+            apiRequest("/api/consultation?limit=100"),
           ]);
+          const contacts = contactResult.contacts || [];
+          const consultations = consultationResult.consultations || [];
 
-          if (contactResult.error) throw contactResult.error;
-          if (consultationResult.error) throw consultationResult.error;
-
-          const contacts = contactResult.data || [];
-          const consultations = consultationResult.data || [];
-
-          contactCount.textContent = String(contacts.length);
-          consultationCount.textContent = String(consultations.length);
+          contactCount.textContent = String(contactResult.pagination?.total ?? contacts.length);
+          consultationCount.textContent = String(consultationResult.pagination?.total ?? consultations.length);
 
           const newest = [...contacts, ...consultations]
-            .filter((item) => item.created_at)
-            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))[0];
-
-          if (newest && newest.created_at) {
-            latestDate.textContent = new Date(
-              newest.created_at,
-            ).toLocaleDateString();
-          } else {
-            latestDate.textContent = "--";
-          }
+            .filter((item) => item.createdAt)
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))[0];
+          latestDate.textContent = newest?.createdAt
+            ? new Date(newest.createdAt).toLocaleDateString()
+            : "--";
 
           renderTable(contactTableContainer, contacts, [
-            { key: "full_name", label: "Name" },
+            { key: "fullName", label: "Name" },
             { key: "email", label: "Email" },
             { key: "company", label: "Company" },
             { key: "service", label: "Service" },
-            {
-              key: "created_at",
-              label: "Date",
-              format: (value) => new Date(value).toLocaleString(),
-            },
+            { key: "createdAt", label: "Date", format: (value) => new Date(value).toLocaleString() },
           ]);
-
           renderTable(consultationTableContainer, consultations, [
             { key: "name", label: "Name" },
             { key: "email", label: "Email" },
             { key: "company", label: "Company" },
             { key: "service", label: "Service" },
-            {
-              key: "created_at",
-              label: "Date",
-              format: (value) => new Date(value).toLocaleString(),
-            },
+            { key: "createdAt", label: "Date", format: (value) => new Date(value).toLocaleString() },
           ]);
         } catch (error) {
-          contactTableContainer.innerHTML =
-            '<div class="empty">Unable to load submissions. Check the Supabase tables and RLS settings.</div>';
-          consultationTableContainer.innerHTML =
-            '<div class="empty">Unable to load submissions. Check the Supabase tables and RLS settings.</div>';
+          contactTableContainer.innerHTML = '<div class="empty">Unable to load submissions. Check the API connection and Neon database setup.</div>';
+          consultationTableContainer.innerHTML = '<div class="empty">Unable to load submissions. Check the API connection and Neon database setup.</div>';
           console.error(error);
+          if (!getToken()) showLogin();
         }
       }
 
-      loginForm.addEventListener("submit", function (event) {
+      loginForm.addEventListener("submit", async function (event) {
         event.preventDefault();
+        loginError.style.display = "none";
+        const submitButton = loginForm.querySelector("button[type='submit']");
+        submitButton.disabled = true;
 
-        const username = document.getElementById("username").value.trim();
-        const password = document.getElementById("password").value.trim();
-
-        if (username === "admin" && password === "admin123") {
-          localStorage.setItem("finbarr-admin", "true");
-          loginError.style.display = "none";
+        try {
+          const result = await apiRequest("/api/auth/login", {
+            method: "POST",
+            body: JSON.stringify({
+              username: document.getElementById("username").value.trim(),
+              password: document.getElementById("password").value,
+            }),
+          });
+          sessionStorage.setItem("finbarr-admin-token", result.token);
           showDashboard();
-          loadData();
-        } else {
+          await loadData();
+        } catch (error) {
+          loginError.textContent = error.message || "Invalid username or password.";
           loginError.style.display = "block";
+        } finally {
+          submitButton.disabled = false;
         }
       });
 
       logoutBtn.addEventListener("click", function () {
-        localStorage.removeItem("finbarr-admin");
+        sessionStorage.removeItem("finbarr-admin-token");
         showLogin();
       });
 
-      if (isLoggedIn()) {
+      if (getToken()) {
         showDashboard();
         loadData();
       } else {

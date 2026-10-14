@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model ContactMessage {
+  id         String   @id @default(cuid())
+  fullName   String   @map("full_name")
+  company    String?
+  email      String
+  phone      String?
+  service    String?
+  message    String
+  status     String   @default("new")
+  adminNotes String?  @map("admin_notes")
+  isRead     Boolean  @default(false) @map("is_read")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@map("contact_messages")
+}
+
+model Consultation {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  service   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@map("consultations")
+}

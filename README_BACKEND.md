@@ -1,263 +1,47 @@
-# FINBARR CONSULT - Complete Backend System
-
-## 📌 START HERE
+# Express, Prisma, and Neon backend
 
-Read these files in this order:
+This repository now uses an Express API and Prisma ORM with Neon PostgreSQL. The API saves the website's contact messages and consultation requests, sends optional Resend email notifications, and provides a JWT-protected admin dashboard.
 
-1. **QUICK_START.md** ← Start here (5 min setup)
-2. **BACKEND_DELIVERY.md** ← Overview of what was built
-3. **backend/SETUP_GUIDE.md** ← Detailed setup
-4. **API_DOCUMENTATION.md** ← API reference
-5. **FRONTEND_INTEGRATION.md** ← Connect to frontend
+## Local setup
 
-## 🎯 What You Now Have
+1. Create a Neon PostgreSQL project. Copy its pooled connection string to `DATABASE_URL` and its direct connection string to `DIRECT_URL`.
+2. Copy `.env.example` to `.env` if needed. Add the Neon URLs, a long random `JWT_SECRET`, and a unique `ADMIN_USERNAME` and `ADMIN_PASSWORD` to `.env`. Do not use the old sample admin credentials.
+3. Install packages and generate Prisma Client:
 
-A **complete, production-ready backend** for your consulting website with:
+   ```sh
+   npm install
+   npm run db:generate
+   ```
 
-- Contact form management
-- Consultation booking system
-- Email notifications
-- Admin dashboard
-- Full documentation
+4. Apply the included initial migration and start the server:
 
-## 🚀 5-Minute Start
+   ```sh
+   npm run db:deploy
+   npm start
+   ```
 
-```bash
-cd backend
-npm install
-cp .env.example .env
-# Edit .env with your credentials
-npm run dev
-```
+5. Open `http://localhost:5000/` for the website or `http://localhost:5000/admin` for the dashboard. The API and database health check is `http://localhost:5000/api/health`.
 
-Visit: `http://localhost:5000/api/health`
-
-## 📁 What's Included
+For local schema development, use `npm run db:migrate -- --name describe-change`. Use `npm run db:deploy` to apply committed migrations in production.
 
-### Backend Code (`backend/`)
+## Environment variables
 
-- Express.js server
-- MongoDB integration
-- Email service (Nodemailer)
-- Admin dashboard
-- API routes & controllers
-- Authentication & middleware
+- `DATABASE_URL`: Neon pooled URL used by the application.
+- `DIRECT_URL`: Neon direct URL used by Prisma migrations.
+- `JWT_SECRET`: long, private signing secret (at least 32 characters).
+- `ADMIN_USERNAME`, `ADMIN_PASSWORD`: dashboard credentials.
+- `PORT`: server port (defaults to `5000`).
+- `FRONTEND_URL`: optional comma-separated browser origins when hosting the frontend separately.
+- `RESEND_API_KEY`, `FROM_EMAIL`, `ADMIN_EMAIL`: optional email notifications. Database writes still succeed when email is not configured or delivery fails.
 
-### Frontend Integration (`api-integration.js`)
+Keep `.env` private. If the frontend is hosted on a separate domain, set `window.FINBARR_API_BASE_URL` to the API origin in both `index.html` and `admin.html`, and set that frontend origin in the API's `FRONTEND_URL`.
 
-- Drop-in API client
-- Handles all form submissions
-- Email notifications
+## Deployment
 
-### Documentation
+The Express app serves the website and API together. On a Node host, use `npm install`, run `npm run db:deploy` once the Neon environment variables are available, and set the start command to `npm start`. The existing Vercel API entry points wrap the same Express app; configure `DATABASE_URL`, `DIRECT_URL`, `JWT_SECRET`, and admin credentials in the Vercel project, then apply the migration before accepting submissions. Configure `FRONTEND_URL` only when the browser page and API have different origins.
 
-- QUICK_START.md - 5 min setup
-- SETUP_GUIDE.md - Local development
-- DEPLOYMENT.md - Production deployment
-- API_DOCUMENTATION.md - API reference
-- FRONTEND_INTEGRATION.md - Frontend integration
-- BACKEND_DELIVERY.md - Complete overview
+Existing submissions in the previous Supabase project are not copied by this setup. Export and import them separately if you need those records in Neon.
 
-## ✨ Key Features
+## Admin access
 
-✅ Contact form submissions  
-✅ Consultation request booking  
-✅ Email notifications (Gmail/Nodemailer)  
-✅ Admin dashboard with login  
-✅ MongoDB database  
-✅ JWT authentication  
-✅ Input validation  
-✅ Error handling  
-✅ Production-ready code  
-✅ Full documentation
-
-## 🔧 Technology Stack
-
-- **Server:** Node.js + Express.js
-- **Database:** MongoDB
-- **Email:** Nodemailer (Gmail/SMTP)
-- **Auth:** JWT tokens
-- **Frontend:** Plain HTML/CSS/JavaScript
-- **Deployment:** Vercel, Heroku, DigitalOcean ready
-
-## 📋 Quick Reference
-
-### Environment Setup
-
-```env
-MONGODB_URI=your-mongo-connection
-SMTP_USER=your-email@gmail.com
-SMTP_PASSWORD=your-app-password
-JWT_SECRET=your-secret-key
-ADMIN_USERNAME=admin
-ADMIN_PASSWORD=admin123
-```
-
-### Start Server
-
-```bash
-npm install
-npm run dev
-```
-
-### Access Points
-
-- **API Server:** http://localhost:5000/api
-- **Admin Dashboard:** backend/admin-dashboard.html
-- **Health Check:** http://localhost:5000/api/health
-
-### Default Admin Credentials
-
-- Username: `admin`
-- Password: `admin123`
-- ⚠️ Change immediately in production!
-
-## 📚 Documentation Guide
-
-| Document                | Purpose                   | Time      |
-| ----------------------- | ------------------------- | --------- |
-| QUICK_START.md          | Get running immediately   | 5 min     |
-| BACKEND_DELIVERY.md     | Understand what was built | 10 min    |
-| backend/SETUP_GUIDE.md  | Detailed local setup      | 15 min    |
-| API_DOCUMENTATION.md    | API reference             | Reference |
-| FRONTEND_INTEGRATION.md | Connect frontend          | 10 min    |
-| backend/DEPLOYMENT.md   | Deploy to production      | 20 min    |
-
-## 🎯 Next Steps
-
-1. Read QUICK_START.md (5 minutes)
-2. Setup .env file with credentials
-3. Run `npm install && npm run dev`
-4. Test at http://localhost:5000/api/health
-5. Update frontend to use api-integration.js
-6. Deploy to production
-
-## 📊 API Endpoints
-
-### Public
-
-- `POST /api/contact` - Submit form
-- `POST /api/consultation` - Book consultation
-- `POST /api/auth/login` - Admin login
-
-### Admin (Protected)
-
-- `GET /api/contact` - List contacts
-- `GET /api/consultation` - List consultations
-- `PUT /api/contact/:id` - Update contact
-- `DELETE /api/contact/:id` - Delete contact
-- ...and more
-
-See API_DOCUMENTATION.md for complete list.
-
-## 🚀 Deploy in Minutes
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Connect to Vercel
-3. Add environment variables
-4. Deploy
-
-See `backend/DEPLOYMENT.md` for detailed instructions.
-
-### Heroku
-
-```bash
-heroku login
-heroku create your-app
-git push heroku main
-```
-
-### DigitalOcean
-
-Similar process - see deployment guide.
-
-## ✅ Success Checklist
-
-- [ ] npm install completed
-- [ ] .env configured
-- [ ] Server running on localhost:5000
-- [ ] Health check returns success
-- [ ] Admin dashboard loads
-- [ ] Can login to admin panel
-- [ ] Contact form submits
-- [ ] Email notifications work
-- [ ] Frontend integrated
-- [ ] Ready to deploy
-
-## 💬 Need Help?
-
-1. Check the documentation files
-2. Review browser console for errors
-3. Check backend server logs
-4. Test API with Postman
-5. Review error messages in `.env` setup
-
-## 📞 Important
-
-- Change admin password from `admin123`
-- Use strong JWT_SECRET
-- Keep .env file secret
-- Enable HTTPS in production
-- Regular MongoDB backups
-- Monitor server logs
-
-## 🎓 Learn More
-
-- [Express.js](https://expressjs.com/)
-- [MongoDB](https://docs.mongodb.com/)
-- [Nodemailer](https://nodemailer.com/)
-- [JWT Auth](https://jwt.io/)
-- [RESTful APIs](https://restfulapi.net/)
-
----
-
-## 📍 File Structure
-
-```
-Finbarr Consult/
-├── backend/                          # Backend API
-│   ├── src/
-│   │   ├── server.js
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   └── middleware/
-│   ├── admin-dashboard.html
-│   ├── package.json
-│   ├── .env.example
-│   ├── README.md
-│   ├── SETUP_GUIDE.md
-│   └── DEPLOYMENT.md
-│
-├── api-integration.js                # Frontend API client
-├── index.html                        # Your existing frontend
-├── style.css
-├── images/
-│
-├── QUICK_START.md                   # 5-minute setup guide
-├── BACKEND_DELIVERY.md              # What was built
-├── API_DOCUMENTATION.md             # API reference
-└── FRONTEND_INTEGRATION.md          # How to integrate
-```
-
----
-
-## 🎉 You're Ready!
-
-Your website now has a complete backend system ready for:
-✅ Production deployment
-✅ Handling real customer requests
-✅ Professional email notifications
-✅ Secure admin access
-✅ Data persistence
-✅ Easy scaling
-
-**Start with QUICK_START.md!**
-
----
-
-**Built with ❤️ for FINBARR CONSULT LIMITED**
-_Strategic Business Consulting Solutions_
+The dashboard login is checked on the server. It receives an 8-hour JWT and sends it with admin-only list requests. Contact and consultation records are never returned without a valid token. Public form and login requests are validated, limited in size, and rate limited.

@@ -1,6 +1,30 @@
 {
+  "name": "finbarr-consult",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Finbarr Consult website and Express API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
+    "db:studio": "prisma studio"
+  },
   "dependencies": {
-    "@supabase/supabase-js": "^2.107.0",
-    "resend": "^6.14.0"
+    "@prisma/adapter-neon": "^6.19.3",
+    "@prisma/client": "^6.19.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "resend": "^6.14.0",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "prisma": "^6.19.3"
   }
 }

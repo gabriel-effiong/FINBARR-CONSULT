@@ -1283,6 +1283,7 @@
       function initContactForm() {
         const contactForm = document.getElementById("contactForm");
         const consultationForm = document.getElementById("consultationForm");
+        const apiBaseUrl = (window.FINBARR_API_BASE_URL || "").replace(/\/$/, "");
 
         async function postForm(
           endpoint,
@@ -1291,7 +1292,7 @@
           errorMessage,
         ) {
           try {
-            const response = await fetch(endpoint, {
+            const response = await fetch(`${apiBaseUrl}${endpoint}`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
