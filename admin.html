@@ -87,6 +87,14 @@
         cursor: pointer;
       }
 
+      .delete-btn {
+        width: auto;
+        background: #dc2626;
+        color: white;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+      }
+
       .error {
         background: #fef2f2;
         border: 1px solid #fecaca;
@@ -220,7 +228,12 @@
 
           <div class="field">
             <label for="password">Password</label>
-            <input id="password" type="password" autocomplete="current-password" required />
+            <input
+              id="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
           </div>
 
           <button type="submit">Login</button>
@@ -269,8 +282,12 @@
       const loginForm = document.getElementById("loginForm");
       const loginError = document.getElementById("loginError");
       const logoutBtn = document.getElementById("logoutBtn");
-      const contactTableContainer = document.getElementById("contactTableContainer");
-      const consultationTableContainer = document.getElementById("consultationTableContainer");
+      const contactTableContainer = document.getElementById(
+        "contactTableContainer",
+      );
+      const consultationTableContainer = document.getElementById(
+        "consultationTableContainer",
+      );
       const contactCount = document.getElementById("contactCount");
       const consultationCount = document.getElementById("consultationCount");
       const latestDate = document.getElementById("latestDate");
@@ -290,20 +307,27 @@
       }
 
       async function apiRequest(path, options = {}) {
-        const headers = { "Content-Type": "application/json", ...(options.headers || {}) };
+        const headers = {
+          "Content-Type": "application/json",
+          ...(options.headers || {}),
+        };
         const token = getToken();
         if (token) headers.Authorization = `Bearer ${token}`;
 
-        const response = await fetch(`${apiBaseUrl}${path}`, { ...options, headers });
+        const response = await fetch(`${apiBaseUrl}${path}`, {
+          ...options,
+          headers,
+        });
         const data = await response.json();
         if (!response.ok || !data.success) {
-          if (response.status === 401) sessionStorage.removeItem("finbarr-admin-token");
+          if (response.status === 401)
+            sessionStorage.removeItem("finbarr-admin-token");
           throw new Error(data.message || "The request failed.");
         }
         return data;
       }
 
-      function renderTable(container, rows, columns) {
+      function renderTable(container, rows, columns, deleteConfig) {
         if (!rows || rows.length === 0) {
           container.innerHTML = '<div class="empty">No records found.</div>';
           return;
@@ -319,6 +343,13 @@
           th.textContent = col.label;
           headRow.appendChild(th);
         });
+
+        if (deleteConfig) {
+          const th = document.createElement("th");
+          th.textContent = "Action";
+          headRow.appendChild(th);
+        }
+
         thead.appendChild(headRow);
         table.appendChild(thead);
 
@@ -327,11 +358,39 @@
           columns.forEach((col) => {
             const td = document.createElement("td");
             let value = row[col.key];
-            if (value === null || value === undefined || value === "") value = "-";
+            if (value === null || value === undefined || value === "")
+              value = "-";
             if (col.format) value = col.format(value, row);
             td.textContent = value;
             tr.appendChild(td);
           });
+
+          if (deleteConfig) {
+            const td = document.createElement("td");
+            const deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.className = "delete-btn";
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", async () => {
+              if (
+                !confirm(
+                  `Delete this ${deleteConfig.label.toLowerCase()} record?`,
+                )
+              )
+                return;
+              try {
+                await apiRequest(`${deleteConfig.path}/${row.id}`, {
+                  method: "DELETE",
+                });
+                await loadData();
+              } catch (error) {
+                alert(error.message || "Delete failed.");
+              }
+            });
+            td.appendChild(deleteButton);
+            tr.appendChild(td);
+          }
+
           tbody.appendChild(tr);
         });
 
@@ -348,8 +407,12 @@
           const contacts = contactResult.contacts || [];
           const consultations = consultationResult.consultations || [];
 
-          contactCount.textContent = String(contactResult.pagination?.total ?? contacts.length);
-          consultationCount.textContent = String(consultationResult.pagination?.total ?? consultations.length);
+          contactCount.textContent = String(
+            contactResult.pagination?.total ?? contacts.length,
+          );
+          consultationCount.textContent = String(
+            consultationResult.pagination?.total ?? consultations.length,
+          );
 
           const newest = [...contacts, ...consultations]
             .filter((item) => item.createdAt)
@@ -358,23 +421,43 @@
             ? new Date(newest.createdAt).toLocaleDateString()
             : "--";
 
-          renderTable(contactTableContainer, contacts, [
-            { key: "fullName", label: "Name" },
-            { key: "email", label: "Email" },
-            { key: "company", label: "Company" },
-            { key: "service", label: "Service" },
-            { key: "createdAt", label: "Date", format: (value) => new Date(value).toLocaleString() },
-          ]);
-          renderTable(consultationTableContainer, consultations, [
-            { key: "name", label: "Name" },
-            { key: "email", label: "Email" },
-            { key: "company", label: "Company" },
-            { key: "service", label: "Service" },
-            { key: "createdAt", label: "Date", format: (value) => new Date(value).toLocaleString() },
-          ]);
+          renderTable(
+            contactTableContainer,
+            contacts,
+            [
+              { key: "fullName", label: "Name" },
+              { key: "email", label: "Email" },
+              { key: "company", label: "Company" },
+              { key: "service", label: "Service" },
+              {
+                key: "createdAt",
+                label: "Date",
+                format: (value) => new Date(value).toLocaleString(),
+              },
+            ],
+            { path: "/api/contact", label: "Contact" },
+          );
+          renderTable(
+            consultationTableContainer,
+            consultations,
+            [
+              { key: "name", label: "Name" },
+              { key: "email", label: "Email" },
+              { key: "company", label: "Company" },
+              { key: "service", label: "Service" },
+              {
+                key: "createdAt",
+                label: "Date",
+                format: (value) => new Date(value).toLocaleString(),
+              },
+            ],
+            { path: "/api/consultation", label: "Consultation" },
+          );
         } catch (error) {
-          contactTableContainer.innerHTML = '<div class="empty">Unable to load submissions. Check the API connection and Neon database setup.</div>';
-          consultationTableContainer.innerHTML = '<div class="empty">Unable to load submissions. Check the API connection and Neon database setup.</div>';
+          contactTableContainer.innerHTML =
+            '<div class="empty">Unable to load submissions. Check the API connection and Neon database setup.</div>';
+          consultationTableContainer.innerHTML =
+            '<div class="empty">Unable to load submissions. Check the API connection and Neon database setup.</div>';
           console.error(error);
           if (!getToken()) showLogin();
         }
@@ -398,7 +481,8 @@
           showDashboard();
           await loadData();
         } catch (error) {
-          loginError.textContent = error.message || "Invalid username or password.";
+          loginError.textContent =
+            error.message || "Invalid username or password.";
           loginError.style.display = "block";
         } finally {
           submitButton.disabled = false;

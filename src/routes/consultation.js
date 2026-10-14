@@ -18,10 +18,17 @@ router.post("/", async (req, res, next) => {
   const email = cleanOptional(body.email, 320);
 
   if (!name || !email) {
-    return res.status(400).json({ success: false, message: "Name and email address are required." });
+    return res
+      .status(400)
+      .json({
+        success: false,
+        message: "Name and email address are required.",
+      });
   }
   if (!emailPattern.test(email)) {
-    return res.status(400).json({ success: false, message: "Enter a valid email address." });
+    return res
+      .status(400)
+      .json({ success: false, message: "Enter a valid email address." });
   }
 
   try {
@@ -47,7 +54,10 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", requireAdmin, async (req, res, next) => {
   const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
-  const limit = Math.min(100, Math.max(1, Number.parseInt(req.query.limit, 10) || 20));
+  const limit = Math.min(
+    100,
+    Math.max(1, Number.parseInt(req.query.limit, 10) || 20),
+  );
 
   try {
     const [consultations, total] = await Promise.all([
@@ -62,9 +72,43 @@ router.get("/", requireAdmin, async (req, res, next) => {
     return res.json({
       success: true,
       consultations,
-      pagination: { total, pages: Math.ceil(total / limit), currentPage: page, limit },
+      pagination: {
+        total,
+        pages: Math.ceil(total / limit),
+        currentPage: page,
+        limit,
+      },
     });
   } catch (error) {
+    return next(error);
+  }
+});
+
+router.delete("/:id", requireAdmin, async (req, res, next) => {
+  const { id } = req.params;
+
+  if (!id) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Record id is required." });
+  }
+
+  try {
+    const deleted = await prisma.consultation.delete({
+      where: { id },
+    });
+
+    return res.json({
+      success: true,
+      message: "Consultation deleted successfully.",
+      deleted,
+    });
+  } catch (error) {
+    if (error.code === "P2025") {
+      return res
+        .status(404)
+        .json({ success: false, message: "Consultation record not found." });
+    }
     return next(error);
   }
 });
