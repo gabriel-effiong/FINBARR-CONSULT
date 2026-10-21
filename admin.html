@@ -392,7 +392,23 @@
           ...options,
           headers,
         });
-        const data = await response.json();
+        const responseText = await response.text();
+        let data;
+        if (responseText) {
+          try {
+            data = JSON.parse(responseText);
+          } catch (error) {
+            if (!(error instanceof SyntaxError)) throw error;
+            throw new Error(
+              `The API returned an invalid response (HTTP ${response.status}). Check that the API is deployed and FINBARR_API_BASE_URL points to it.`,
+            );
+          }
+        }
+        if (!data || typeof data !== "object" || Array.isArray(data)) {
+          throw new Error(
+            `The API returned an empty response (HTTP ${response.status}). Check that the API is deployed and FINBARR_API_BASE_URL points to it.`,
+          );
+        }
         if (!response.ok || !data.success) {
           if (response.status === 401)
             sessionStorage.removeItem("finbarr-admin-token");
