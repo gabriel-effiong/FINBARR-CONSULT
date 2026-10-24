@@ -6,7 +6,23 @@ async function apiRequest(path, options = {}, authenticated = false) {
   if (authenticated && token) headers.Authorization = `Bearer ${token}`;
 
   const response = await fetch(`${API_BASE_URL}${path}`, { ...options, headers });
-  const result = await response.json();
+  const responseText = await response.text();
+  let result;
+  if (responseText.trim()) {
+    try {
+      result = JSON.parse(responseText);
+    } catch (error) {
+      if (!(error instanceof SyntaxError)) throw error;
+      throw new Error(
+        `The API returned an invalid response (HTTP ${response.status}). Check that the API is deployed and FINBARR_API_BASE_URL points to it.`,
+      );
+    }
+  }
+  if (!result || typeof result !== "object" || Array.isArray(result)) {
+    throw new Error(
+      `The API returned an empty response (HTTP ${response.status}). Check that the API is deployed and FINBARR_API_BASE_URL points to it.`,
+    );
+  }
   if (!response.ok || !result.success) {
     if (response.status === 401) sessionStorage.removeItem("finbarr-admin-token");
     throw new Error(result.message || "The request failed.");
