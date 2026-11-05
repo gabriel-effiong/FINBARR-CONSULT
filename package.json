@@ -27,6 +27,6 @@
     "serverless-http": "^3.2.0"
   },
   "devDependencies": {
-    "prisma": "^6.19.3"
+    "prisma": "^8.0.0-rc.27"
   }
 }

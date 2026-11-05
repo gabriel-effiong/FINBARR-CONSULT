@@ -4,6 +4,10 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
+function getFromEmail() {
+  return process.env.FROM_EMAIL || process.env.RESEND_FROM_EMAIL || "no-reply@finbarrconsult.com";
+}
+
 function escapeHtml(value = "") {
   return String(value).replace(/[&<>"']/g, (character) => {
     const entities = {
@@ -23,7 +27,7 @@ async function sendEmails(messages) {
   for (const message of messages) {
     try {
       const result = await resend.emails.send({
-        from: process.env.FROM_EMAIL || "no-reply@finbarrconsult.com",
+        from: getFromEmail(),
         ...message,
       });
       if (result.error) console.error("Email delivery failed:", result.error);
@@ -41,7 +45,7 @@ function contactEmails(contact) {
   const service = escapeHtml(contact.service || "Not specified");
   const message = escapeHtml(contact.message).replace(/\r?\n/g, "<br>");
   const adminEmail = process.env.ADMIN_EMAIL;
-  const from = process.env.FROM_EMAIL || "no-reply@finbarrconsult.com";
+  const from = getFromEmail();
   const emails = [];
 
   if (adminEmail) {
