@@ -591,7 +591,7 @@
           await apiRequest(`${deleteConfig.path}/${record.id}`, {
             method: "DELETE",
           });
-          await loadData();
+          loadData();
         } catch (error) {
           alert(error.message || "Delete failed.");
         }

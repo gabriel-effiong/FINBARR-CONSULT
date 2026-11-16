@@ -1,0 +1,37 @@
+[1mdiff --git a/.env.example b/.env.example[m
+[1mindex e1bf595..60b471d 100644[m
+[1m--- a/.env.example[m
+[1m+++ b/.env.example[m
+[36m@@ -1,19 +1,22 @@[m
+ PORT=5000[m
+ NODE_ENV=development[m
+ [m
+[31m-# Copy the pooled Neon URL into DATABASE_URL and the direct Neon URL into DIRECT_URL.[m
+[32m+[m[32mDIRECT_URL="postgresql://neondb_owner:npg_dqi5PoV2tbCE@ep-proud-waterfall-b42vmgve-pooler.c-6.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"[m
+[32m+[m[32m# Neon Database[m
+ DATABASE_URL="postgresql://USER:PASSWORD@YOUR-NEON-HOST-pooler.REGION.aws.neon.tech/DB?sslmode=require"[m
+ DIRECT_URL="postgresql://USER:PASSWORD@YOUR-NEON-HOST.REGION.aws.neon.tech/DB?sslmode=require"[m
+ [m
+[31m-# Generate a long random value for JWT_SECRET. Set a unique admin username and password.[m
+[31m-JWT_SECRET=replace-with-a-long-random-secret[m
+[31m-ADMIN_USERNAME=finbarr_admin[m
+[31m-ADMIN_PASSWORD=ReplaceWithStrongPassword123![m
+[31m-[m
+ # Optional email notifications (forms are still saved if email is not configured).[m
+[31m-RESEND_API_KEY=[m
+[32m+[m
+ FROM_EMAIL=no-reply@finbarrconsult.com[m
+[31m-ADMIN_EMAIL=finbarrconsultslimited@gmail.com[m
+[32m+[m[32m# Legacy alias supported for older configs:[m
+[32m+[m[32m# RESEND_FROM_EMAIL=no-reply@finbarrconsult.com[m
+[32m+[m[32mADMIN_EMAIL=gabrielekpenyong55@gmail.com[m
+[32m+[m
+[32m+[m[32mJWT_SECRET=your_random_secret_here[m
+[32m+[m[32mADMIN_USERNAME=your_admin_username[m
+[32m+[m[32mADMIN_PASSWORD=your_admin_password_here[m
+[32m+[m[32mRESEND_API_KEY=your_resend_api_key_here[m
+ [m
+ # Optional comma-separated origins when the frontend is hosted separately.[m
+[31m-FRONTEND_URL=[m
+[32m+[m[32mFRONTEND_URL=http://localhost:5000[m
+\ No newline at end of file[m

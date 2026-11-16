@@ -5,7 +5,13 @@ const resend = process.env.RESEND_API_KEY
   : null;
 
 function getFromEmail() {
-  return process.env.FROM_EMAIL || process.env.RESEND_FROM_EMAIL || "no-reply@finbarrconsult.com";
+  function getFromEmail() {
+    return (
+      process.env.FROM_EMAIL ||
+      process.env.RESEND_FROM_EMAIL ||
+      "notifications@finbarrconsultltd.com"
+    );
+  }
 }
 
 function escapeHtml(value = "") {
